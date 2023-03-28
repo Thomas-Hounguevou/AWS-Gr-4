@@ -1,6 +1,9 @@
-**gras** <br>(saut de ligne<br>)
- *italique*
 # Sujet : **Jeu du Pendu** 
+
+## Descriptif du projet :
+Nous souhaitons réaliser une page web permettant de jouer au jeu du pendu, notre version de ce jeu disposera d'un choix de difficulté, d'un classement et d'une possibilité pour l'utilisateur de rajouter des mots.<br> 
+L'utilisateur pourra jouer contre un autre utilisateur après lui avoir partagé un code ou un lien unique, les utilisateurs devront ensuite choisir de jouer avec des mots de notre liste (puis choisir la difficulté de ce mot) ou d'en créer un pour cette partie, suite à quoi après avoir decidé des rôles (celui qui choisit le mot et celui qui le devine), la partie commence enfin et on garde en compte celui qui l'a remportée pour la prochaine manche.<br>
+L'utilisateur aura aussi l'option de jouer contre un ordinateur qui choissira un mot correspondant à la difficulté choisie préalablement.
 
 # Semaine 1 (23/03 - 29/03) : 
 ## Rôles : 
@@ -18,10 +21,13 @@
 - Essayer d'ajouter une page avec le classement des joueurs
  
 ## Bibliographie :
+- https://medium.com/@ismail.chahrazed/creer-site-web-partie1-84ce9ddf26bb (Base pour la création de la page d'accueil)
 - https://developer.mozilla.org/fr/docs/Web/HTML/Element/input/button (Boutons en HTML)
 - https://developer.mozilla.org/fr/docs/Web/HTML/Element/a (Bouton avec redirection vers un autre site)
+-
 ## Problèmes: 
-- 
+- Problèmes d'organisation et de communication au commencement du projet
+- Choix du sujet
 
 
 
