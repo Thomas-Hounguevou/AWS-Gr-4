@@ -56,7 +56,7 @@ function Init(mot) {
     AfficheLettreUtilise(lettreUtilise)
 }
 
-
+// mets a jours l'affichage nombre d'essai en html
 function UpdateEssai() {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("nberreur");
@@ -67,6 +67,7 @@ function UpdateEssai() {
     document.body.appendChild(divmain);
 }
 
+// verifie si la lettre et present dans le mot 
 function check(mot, lettre) {
     Present = false
     for (let i = 0; i < mot.length; i++) {
@@ -80,13 +81,14 @@ function check(mot, lettre) {
 
 }
 
-function Affiche(secret) {
+/*function Affiche(secret) {
     tmp = ""
     for (let i = 0; i < secret.length; i++) {
         tmp = tmp + secret[i]
     }
-}
+}*/
 
+//verification si la lettre na pas deja etait utilisee
 function VerifLettre(lettre) {
     if (lettreUtilise.includes(lettre)) {
         return false
@@ -118,6 +120,7 @@ function VerifPerdu(nbEssai) {
     }
 }
 
+//mets a jour l'affichage des lettre utilisee html 
 function UpdateLettreUtilise(lettreUtilise) {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("lettreutilise");
@@ -129,6 +132,7 @@ function UpdateLettreUtilise(lettreUtilise) {
     document.body.appendChild(divmain);
 }
 
+//affiche les lettre utiliser html
 function AfficheLettreUtilise(lettreUtilise) {
     var div = document.getElementById("Zonejeu")
     var p = document.createElement("p");
@@ -138,6 +142,7 @@ function AfficheLettreUtilise(lettreUtilise) {
     document.body.appendChild(divmain);
 }
 
+//affiche le nombre d'essai html
 function AfficheEssai(nbEssai) {
     var div = document.getElementById("Zonejeu")
     var p = document.createElement("p");
@@ -147,6 +152,7 @@ function AfficheEssai(nbEssai) {
     document.body.appendChild(divmain);
 }
 
+//affiche la zone d'entree html
 function Input() {
     var div = document.createElement("div");
     div.id = "input"
@@ -159,6 +165,7 @@ function Input() {
     document.body.appendChild(divmain);
 }
 
+//recupere la valeur entree dans la zone de texte 
 function getInputValue() {
     input.onchange = function () {
         Jeu(input.value.toUpperCase())
@@ -166,10 +173,12 @@ function getInputValue() {
     }
 }
 
+//efface la zone d'entree
 function clearInput() {
     input.value = "";
 }
 
+//jeu du pendu html
 function Jeu(lettre) {
     check(mot, lettre)
     VerifLettre(lettre)
@@ -193,7 +202,7 @@ function Jeu(lettre) {
 
 }
 
-
+//affiche Gagné html
 function Gagner() {
     var div = document.createElement("div");
     div.id = "gagner"
@@ -204,6 +213,7 @@ function Gagner() {
     document.body.appendChild(divmain);
 }
 
+//affiche perdu html
 function Perdu() {
     var div = document.createElement("div");
     div.id = "perdu"
@@ -214,6 +224,7 @@ function Perdu() {
     document.body.appendChild(divmain);
 }
 
+//efface tt les element de la page 
 function ClearPage() {
     var div = document.getElementById("main")
     while (div.firstChild) {
@@ -221,6 +232,7 @@ function ClearPage() {
     }
 }
 
+//affiche le clavien en html
 function Clavier() {
     var div = document.createElement("div");
     div.id = "Zoneclavier"
@@ -247,6 +259,7 @@ function Clavier() {
     document.body.appendChild(divmain);
 }
 
+//recupere la lettre selectionner sur le clavier 
 function SelectClavierWord() {
     var table = document.getElementById("clavier")
     table.onclick = function (event) {
