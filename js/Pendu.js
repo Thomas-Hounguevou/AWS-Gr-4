@@ -1,3 +1,5 @@
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 var mot = "Hello World"
 mot = mot.toUpperCase()
 var secret = []
@@ -12,6 +14,9 @@ var input
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var alph = 0
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Fonction qui initie le jeu avec un mot choisit (Hello World)
 function Init (mot) {
     var div = document.createElement("div");
     div.id = "Zonejeu"
@@ -51,6 +56,7 @@ function Init (mot) {
     AfficheLettreUtilise( lettreUtilise) 
 }
 
+
 function UpdateEssai() {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("nberreur");
@@ -89,6 +95,8 @@ function VerifLettre(lettre) {
     }
 }
 
+// Fonction qui vérifie si le joueur a gagné. 
+
 function VerifGagne(secret) {
     for (let i = 0; i < secret.length; i++) {
         if (secret[i] == "_") {
@@ -98,6 +106,7 @@ function VerifGagne(secret) {
     return true
 }
 
+// Fonction qui vérifie si le joueur a perdu. Nombre d'essaie > 9 
 function VerifPerdu(nbEssai) {
     if (nbEssai == 10) {
         return true
@@ -242,10 +251,7 @@ function SelectClavierWord() {
     }
 }
 
-
-    
-
-
+// Fonction principale
 
 function main() {
     Init(mot)
