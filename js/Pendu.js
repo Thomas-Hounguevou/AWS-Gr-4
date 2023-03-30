@@ -3,7 +3,7 @@
 var mot = "Hello World"
 mot = mot.toUpperCase()
 var secret = []
-var tmp =""  
+var tmp = ""
 var nbEssai = 0
 var lettreUtilise = []
 var lettre = "o"
@@ -17,7 +17,7 @@ var alph = 0
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Fonction qui initie le jeu avec un mot choisit (Hello World)
-function Init (mot) {
+function Init(mot) {
     var div = document.createElement("div");
     div.id = "Zonejeu"
     divmain.appendChild(div)
@@ -27,23 +27,23 @@ function Init (mot) {
     for (let i = 0; i < mot.length; i++) {
         if (mot[i] == " ") {
             secret[i] = " "
-            td= document.createElement("td");
+            td = document.createElement("td");
             td.innerHTML = " ";
             td.className = i
             table.appendChild(td);
 
-        } 
+        }
         else if (mot[i] == "-") {
             secret[i] = "-"
-            td= document.createElement("td");
+            td = document.createElement("td");
             td.innerHTML = "-";
             td.className = i
             table.appendChild(td);
 
         }
-        else{
+        else {
             secret[i] = "_"
-            td= document.createElement("td");
+            td = document.createElement("td");
             td.innerHTML = "_";
             td.className = i
             table.appendChild(td);
@@ -52,15 +52,17 @@ function Init (mot) {
 
     }
     document.body.appendChild(divmain);
-    AfficheEssai(nbEssai) 
-    AfficheLettreUtilise( lettreUtilise) 
+    AfficheEssai(nbEssai)
+    AfficheLettreUtilise(lettreUtilise)
 }
 
 
 function UpdateEssai() {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("nberreur");
-    p.innerHTML = "Nombre d'erreur : " + nbEssai
+    p.innerHTML = "Nombre d'erreurs : " + nbEssai
+    p.style.color = "red"; // set font color to red
+    p.style.fontFamily = "Montserrat, sans-serif"; // set font family to Arial or sans-serif
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -81,7 +83,7 @@ function check(mot, lettre) {
 function Affiche(secret) {
     tmp = ""
     for (let i = 0; i < secret.length; i++) {
-        tmp = tmp + secret[i] 
+        tmp = tmp + secret[i]
     }
 }
 
@@ -119,7 +121,10 @@ function VerifPerdu(nbEssai) {
 function UpdateLettreUtilise(lettreUtilise) {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("lettreutilise");
+    p.style.color = "black"; // set font color to red
+    p.style.fontFamily = "Montserrat, sans-serif"; // set font family to Arial or sans-serif
     p.innerHTML = "Lettre utilisé : " + lettreUtilise
+    
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -154,8 +159,8 @@ function Input() {
     document.body.appendChild(divmain);
 }
 
-function getInputValue(){
-    input.onchange = function() {
+function getInputValue() {
+    input.onchange = function () {
         Jeu(input.value.toUpperCase())
         clearInput()
     }
@@ -165,31 +170,31 @@ function clearInput() {
     input.value = "";
 }
 
-function Jeu (lettre){
+function Jeu(lettre) {
     check(mot, lettre)
-        VerifLettre(lettre)
-        if (Present == true) {
-            if (VerifGagne(secret)) {
-                ClearPage()
-                Gagner()
-            }
+    VerifLettre(lettre)
+    if (Present == true) {
+        if (VerifGagne(secret)) {
+            ClearPage()
+            Gagner()
         }
-        else {
-            nbEssai++
-            if (VerifPerdu(nbEssai)) {
-                ClearPage()
-                Perdu()
-            }
+    }
+    else {
+        nbEssai++
+        if (VerifPerdu(nbEssai)) {
+            ClearPage()
+            Perdu()
         }
-        UpdateEssai()
-        UpdateLettreUtilise(lettreUtilise)
-        console.log("Lettre utilisé : " + lettreUtilise)
-        console.log("nombre d'essai : " + nbEssai)
-    
+    }
+    UpdateEssai()
+    UpdateLettreUtilise(lettreUtilise)
+    console.log("Lettre utilisé : " + lettreUtilise)
+    console.log("nombre d'essai : " + nbEssai)
+
 }
 
 
-function Gagner () {
+function Gagner() {
     var div = document.createElement("div");
     div.id = "gagner"
     divmain.appendChild(div)
@@ -199,7 +204,7 @@ function Gagner () {
     document.body.appendChild(divmain);
 }
 
-function Perdu () {
+function Perdu() {
     var div = document.createElement("div");
     div.id = "perdu"
     divmain.appendChild(div)
@@ -210,13 +215,13 @@ function Perdu () {
 }
 
 function ClearPage() {
-    var div = document.getElementById("main")    
+    var div = document.getElementById("main")
     while (div.firstChild) {
         div.removeChild(div.firstChild);
-    }   
+    }
 }
 
-function Clavier () {
+function Clavier() {
     var div = document.createElement("div");
     div.id = "Zoneclavier"
     divmain.appendChild(div)
@@ -228,10 +233,10 @@ function Clavier () {
         tr.id = "touche"
         table.appendChild(tr)
         for (let j = 0; j < 10; j++) {
-            if (alph == 25) {
+            if (alph == 26) {
                 break
             }
-            
+
             var td = document.createElement("td");
             td.id = alphabet[alph]
             td.innerHTML = alphabet[alph]
@@ -244,9 +249,9 @@ function Clavier () {
 
 function SelectClavierWord() {
     var table = document.getElementById("clavier")
-    table.onclick = function(event) {
+    table.onclick = function (event) {
         var target = event.target;
-        var lettre = target.id  
+        var lettre = target.id
         Jeu(lettre)
     }
 }
@@ -262,11 +267,11 @@ function main() {
         lettre = prompt("Entrez une lettre :")
         check(mot, lettre)
         VerifLettre(lettre)
-        if (Present == true) {         
+        if (Present == true) {
             if (VerifGagne(secret)) {
                 console.log("Gagné")
                 break
-            }            
+            }
         }
         else {
             nbEssai++
@@ -275,10 +280,10 @@ function main() {
                 break
             }
         }
-        AfficheLettreUtilise( lettreUtilise)
+        AfficheLettreUtilise(lettreUtilise)
         console.log("Lettre utilisé : " + tmp)
         AfficheEssai(nbEssai)
-        console.log("nombre d'essai : " +tmp)
+        console.log("nombre d'essai : " + tmp)
     }
 }
 
