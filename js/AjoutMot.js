@@ -1,2 +1,2 @@
-let myUsername = document.getElementsByClassName('Requete');
-console.log(myUsername[0]);
+let mot = document.getElementById("Requete").value;
+console.log(mot);

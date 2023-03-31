@@ -6,13 +6,15 @@
 - Codeur 2 : BOUALI ABDELHADI 
 
 ## Objectifs de la semaine :
-- Définir les frameworks qu'on utilise côté client et côté serveur.
+- Définir le framework qu'on utilise.
+- Permettre à un utilisateur de faire une requête dans la page des règles pour ajouter un mot à la base de donnée.
 - Faire les règles pour clarifier le jeu.
 - Créer ou emprunter une base de données de mots.
 - Trouver un algorithme pour la difficulté des mots.
-- Chercher à faire un système de connexion pour sauvegarder les parties précédentes.
+- Chercher à faire un système de connexion pour sauvegardie les parties précédentes.
 - Calculer un score suite à une partie (et l'enregistrer quelque part).
-- Chercher à implémenter un timer lorqu'une partie est lancée
+- Chercher à implémenter un timer lorqu'une partie est lancée.
+- Réfléchir à créer un système de "salle" pour pouvoir jouer en multijoueur
 
 ## Avancement :
 ### Jeu : 
