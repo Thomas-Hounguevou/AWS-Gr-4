@@ -45,6 +45,7 @@ L'utilisateur aura aussi l'option de jouer contre un ordinateur qui choissira un
 - Trouver un algorithme pour la difficulté des mots.
 - Chercher à faire un système de connexion pour sauvegardie les parties précédentes.
 - Calculer un score suite à une partie (et l'enregistrer quelque part).
+- Chercher à implémenter un timer lorqu'une partie est lancée
 
 
 ## Bibliographie :
@@ -57,8 +58,8 @@ L'utilisateur aura aussi l'option de jouer contre un ordinateur qui choissira un
 ## Rôles : 
 - Responsable : 
 - Chercheur : 
-- Codeur 1 :  
-- Codeur 2 : 
+- Codeur 1 :  DOCHERTY RONAN
+- Codeur 2 : HOUNGUEVOU THOMAS
 ## Objectifs de la semaine :
 
 ## Bibliographie :
@@ -71,8 +72,8 @@ L'utilisateur aura aussi l'option de jouer contre un ordinateur qui choissira un
 ## Rôles : 
 - Responsable : 
 - Chercheur : 
-- Codeur 1 :  
-- Codeur 2 : 
+- Codeur 1 :  DOCHERTY RONAN
+- Codeur 2 : HOUNGUEVOU THOMAS
 ## Objectifs de la semaine :
 
 ## Bibliographie :
