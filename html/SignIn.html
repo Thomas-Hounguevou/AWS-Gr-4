@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Jeu du pendu</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@material-ui/core@4.12.3/dist/material-ui.min.css">
+    <link rel="stylesheet" href="../css/connection.css">
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module">
+       // Import the functions you need from the SDKs you need
+        import {initializeApp} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+        import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBXn_eICK_LPvJNVZVOndONusBVaRC9b3Q",
+          authDomain: "jeux-du-pendu.firebaseapp.com",
+          projectId: "jeux-du-pendu",
+          storageBucket: "jeux-du-pendu.appspot.com",
+          messagingSenderId: "630645749478",
+          appId: "1:630645749478:web:e8f793888443727a15ed27"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const database = getDatabase(app);
+
+
+        $('#submit').click(function(){
+          var email = document.getElementById('username').value;
+          var password = document.getElementById('password').value;
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              
+              
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+            });
+        });
+    </script>
+    <div class="container">
+      <div class="login-box">
+        <h1>Connexion</h1>
+        <form>
+          <div class="input-group">
+            <label for="username">Email</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          <div class="input-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <button type="submit" class="btn">Se connecter</button>
+        </form>
+        <p>Pas encore inscrit ? <a href="SignUp.html">S'inscrire</a></p>
+      </div>
+    </div>
+  </body>
+  
+</html>
