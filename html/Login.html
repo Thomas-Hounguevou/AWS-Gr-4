@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Loging</title>
+</head>
+<body>
+    <script src="../js/ModuleLogin.js" type="module" ></script>
+    <script src="../js/Login.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <div id="main">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" />
+        </div>
+        
+        <button id="buttonLogin" onclick="register()">Login</button>
+    </div>
+    
+</html>
