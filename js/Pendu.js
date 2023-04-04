@@ -1,5 +1,4 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 var mot = "Hello World"
 mot = mot.toUpperCase()
 var secret = []
