@@ -21,17 +21,16 @@
 - Connexion/Inscription : <br>
 Hassan a créé les pages de connexion et d'inscription. Les données sont reliés à une base de données Firebase.
 - Base de données : <br>
-Nous avons décidé de créer une base de données de mots et de l'enregister dans Firebase, il nous faut un compte Google pour pouvoir utiliser Firebase donc j'ai créé un compte qu'on utilisera pour le reste du projet.
-Le framework back-end devra communiquer avec cette base de données pour pouvoir choisir au hasard un ou plusieurs mots pour jouer, et pour que le joueur puisse ajouter un mot dans la base de donnée s'il le souhaite.
+Nous avons décidé de créer une base de données de mots et de l'enregistrer dans Firebase, il nous faut un compte Google pour pouvoir utiliser Firebase donc j'ai créé un compte qu'on utilisera pour le reste du projet.
 
-- Système de score: (pas encore implémenté)<br>
-Que le mot soit trouvé ou pas, on additionne le score de chaque lettre trouvée dans le mot. On utilise le système suivant: <br>
-A,E,I,L,N,O,R,S,T,U : 1 point <br>
-D,G,M               : 2 points <br>
-B,C,P               : 3 points <br>
-F,H,V               : 4 points <br>
-J,Q                 : 8 points <br>
-K,W,X,Y,Z           : 10 points <br>
+- Système de score: <br>
+Que le mot soit trouvé ou pas, on additionne le score de chaque lettre trouvée dans le mot. On utilisera le système suivant (le même que celui du Scrabble): <br>
+A, E, I, L, N, O, R, S, T, U : 1 point <br>
+D, G, M                      : 2 points <br>
+B, C, P                      : 3 points <br>
+F, H, V                      : 4 points <br>
+J, Q                         : 8 points <br>
+K, W, X, Y, Z               : 10 points <br>
 On pourra donner un bonus de points si le mot est trouvé, selon sa rareté d'utilisation, le nombre d'essais restants et le temps que le joueur a mit pour le trouver.
 
 ### Framework :
@@ -40,18 +39,18 @@ On pourra donner un bonus de points si le mot est trouvé, selon sa rareté d'ut
 J'ai cherché différents frameworks chez les plus utilisés tels que React, Angular, Svelte et Vue.js. Et on a décidé de prendre React pour sa facilité d'utilisation et de gestion.
 
   - Pour le back end: <br>
-Parmi les plus utilisés d'entre eux, j'ai regardé Node.js et Express.js. On utilise Node.js, car on utilise Firebase qui est relié à ce framework via npm.
+On utilise Node.js, car on utilise Firebase qui est relié à ce framework via npm.
 
 ## Bibliographie :
-- [Ajout d'un timer](https://www.commentcoder.com/timer-javascript/)
+
 - [Différents frameworks front ent](https://developer.mozilla.org/fr/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks)
 
 - [Exemple d'utilisation de React](https://fr.reactjs.org/tutorial/tutorial.html)
-
-- [Différents frameworks back end](https://developer.mozilla.org/fr/docs/Learn/Server-side/First_steps/Web_frameworks) 
 
 - [Base de données Firebase](https://firebase.google.com/docs/web/setup?hl=fr)
 
 ## Problèmes: 
 - Le manque de temps: <br>
 on a eu que 5 jours au lieu de 7 pour avancer, et on avait plusieurs autres rendus de projets.
+- Firebase: <br>
+on a eu beaucoup de mal à utiliser Firebase, ce qui fait qu'on n'a pas encore notre base de données pour les mots, et notre système pour ajouter un mot, l'inscription et la connexion ne sont pas effectifs.

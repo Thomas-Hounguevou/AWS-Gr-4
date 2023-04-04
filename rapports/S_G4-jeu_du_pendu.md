@@ -50,6 +50,9 @@ L'utilisateur aura aussi l'option de jouer contre un ordinateur qui choissira un
 - Réfléchir à créer un système de "salle" pour pouvoir jouer en multijoueur
 
 
+Le framework back-end devra communiquer avec cette base de données pour pouvoir choisir au hasard un ou plusieurs mots pour jouer, et pour que le joueur puisse ajouter un mot dans la base de donnée s'il le souhaite.
+
+
 ## Bibliographie :
 -
 ## Problèmes: 
@@ -65,7 +68,7 @@ L'utilisateur aura aussi l'option de jouer contre un ordinateur qui choissira un
 ## Objectifs de la semaine :
 
 ## Bibliographie :
--
+- [Ajout d'un timer](https://www.commentcoder.com/timer-javascript/)
 ## Problèmes: 
 - 
 
