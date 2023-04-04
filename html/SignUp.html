@@ -63,10 +63,10 @@
               alert('User created successfully!');
             }).catch((error) => {
               console.error(error);
+              alert('Error creating user!');
+              $("body").load("signIn.html")
             });
-          }).catch((error) => {
-            console.error(error);
-          });
+          })  
       });
     </script>
   </body>
