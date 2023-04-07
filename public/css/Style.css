@@ -1,0 +1,74 @@
+/* reset default margin and padding for all elements */
+* {
+    margin: 10px;
+    padding: 0;
+  }
+  
+  /* set background color for the body */
+  body {
+    background-color: #f0f0f0;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  /* center the heading and give it a border */
+  h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+    color: #1d3557;
+    text-shadow: 2px 2px #f1faee;
+    margin-bottom: 30px;
+  }
+  
+  /* style the banner section */
+  #banner {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* style the button inside the banner section */
+  #banner button {
+    background-color: #0080ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* style the footer section */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* style the footer section ul */
+  footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* style the footer section li */
+  footer li {
+    margin: 0 10px;
+  }
+
+  /* style for all buttons */
+  button {
+    background-color: #0080ff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
