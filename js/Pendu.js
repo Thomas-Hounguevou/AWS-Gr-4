@@ -9,13 +9,69 @@ var lettre = "o"
 var Present = false
 var divmain = document.querySelector("div")
 divmain.id = "main"
-var input
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var alph = 0
-
+const score = calculeScore(mot);
+console.log(`Le mot "${mot}" vaut ${score} points`);
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// Fonction qui initie le jeu avec un mot choisit (Hello World)
+function calculeScore(mot) {
+    let score = 0;
+    const points = {
+      'A': 1, 'E': 1, 'I': 1, 'L': 1, 'N': 1, 'O': 1, 'R': 1, 'S': 1, 'T': 1, 'U': 1,
+      'D': 2, 'G': 2, 'M': 2,
+      'B': 3, 'C': 3, 'P': 3,
+      'F': 4, 'H': 4, 'V': 4,
+      'J': 8, 'Q': 8,
+      'K': 10, 'W': 10, 'X': 10, 'Y': 10, 'Z': 10
+    };
+    for (let i = 0; i < mot.length; i++) {
+      const lettre = mot[i].toUpperCase();
+      if (points[lettre]) {
+        score += points[lettre];
+      }
+    }
+    return score;
+  }
+
+// Fonction qui renvoie la lettre entrée au clavier
+function KeyPressed(event) {
+    let lettre = event.key.toUpperCase();
+  
+    // Vérifie si c'est une bien lettre
+    if (alphabet.indexOf(lettre) >= 0) {
+      // Vérifie que la lettre n'a pas déjà été utilisée
+      if (VerifLettre(lettre)) {
+        // Vérifie si la lettre est dans le mot
+        check(mot, lettre);
+  
+        // Met à jour l'affichage des erreurs
+        if (!Present) {
+			nbEssai++;
+			UpdateEssai();
+		  }
+			
+        // Met à jour l'affichage des lettres utilisées
+        UpdateLettreUtilise(lettreUtilise);
+  
+        // Vérifie si le joueur a gagné ou perdu
+        if (VerifGagne(secret)) {
+          alert("Vous avez gagné !");
+		  document.removeEventListener("keydown", KeyPressed);
+		  ClearPage() 
+		  Gagner()
+        } else if (VerifPerdu(nbEssai)) {
+          alert("Vous avez perdu !");
+		  document.removeEventListener("keydown", KeyPressed);
+		  ClearPage() 
+		  Perdu()
+        }
+      }
+    }
+  }
+  
+
+// Fonction qui initie le jeu avec un mot choisis (Hello World)
 function Init(mot) {
     var div = document.createElement("div");
     div.id = "Zonejeu"
@@ -23,6 +79,7 @@ function Init(mot) {
     var table = document.createElement("table");
     var td = document.createElement("td");
     div.appendChild(table);
+	document.addEventListener("keydown", KeyPressed);
     for (let i = 0; i < mot.length; i++) {
         if (mot[i] == " ") {
             secret[i] = " "
@@ -55,18 +112,55 @@ function Init(mot) {
     AfficheLettreUtilise(lettreUtilise)
 }
 
-// mets a jours l'affichage nombre d'essai en html
+// fonction qui affiche l'image correspondant au nombre d'erreurs actuel
+function afficherImage(nbEssai) {
+    var image = document.getElementById("image");
+    switch(nbEssai) {
+      case 1:
+        image.src = "../images/1.jpg";
+        break;
+      case 2:
+        image.src = "../images/2.jpg";
+        break;
+      case 3:
+        image.src = "../images/3.jpg";
+        break;
+      case 4:
+        image.src = "../images/4.jpg";
+        break;
+      case 5:
+        image.src = "../images/5.jpg";
+        break;
+      case 6:
+        image.src = "../images/6.jpg";
+        break;
+	  case 7:
+        image.src = "../images/7.jpg";
+        break;
+      case 8:
+        image.src = "../images/8.jpg";
+        break;
+      case 9:
+        image.src = "../images/9.jpg";
+        break;
+	  case 10:
+		image.src = "../images/10.jpg";
+		break;		
+    }
+  }
+  
+
+// Met à jour l'affichage nombre d'essais en html
 function UpdateEssai() {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("nberreur");
     p.innerHTML = "Nombre d'erreurs : " + nbEssai
     p.style.color = "red"; // set font color to red
-    p.style.fontFamily = "Montserrat, sans-serif"; // set font family to Arial or sans-serif
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
 
-// verifie si la lettre et present dans le mot 
+// vérifie si la lettre est dans le mot 
 function check(mot, lettre) {
     Present = false
     for (let i = 0; i < mot.length; i++) {
@@ -87,7 +181,7 @@ function check(mot, lettre) {
     }
 }*/
 
-//verification si la lettre na pas deja etait utilisee
+//vérification si la lettre n'a pas déjà été utilisée
 function VerifLettre(lettre) {
     if (lettreUtilise.includes(lettre)) {
         return false
@@ -109,7 +203,7 @@ function VerifGagne(secret) {
     return true
 }
 
-// Fonction qui vérifie si le joueur a perdu. Nombre d'essaie > 9 
+// Fonction qui vérifie si le joueur a perdu. Nombre d'essais > 9 
 function VerifPerdu(nbEssai) {
     if (nbEssai == 10) {
         return true
@@ -119,19 +213,17 @@ function VerifPerdu(nbEssai) {
     }
 }
 
-//mets a jour l'affichage des lettre utilisee html 
+//mets à jour l'affichage des lettres utilisées html 
 function UpdateLettreUtilise(lettreUtilise) {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("lettreutilise");
-    p.style.color = "black"; // set font color to red
-    p.style.fontFamily = "Montserrat, sans-serif"; // set font family to Arial or sans-serif
     p.innerHTML = "Lettre utilisé : " + lettreUtilise
     
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
 
-//affiche les lettre utiliser html
+//affiche les lettres utilisées html
 function AfficheLettreUtilise(lettreUtilise) {
     var div = document.getElementById("Zonejeu")
     var p = document.createElement("p");
@@ -141,7 +233,7 @@ function AfficheLettreUtilise(lettreUtilise) {
     document.body.appendChild(divmain);
 }
 
-//affiche le nombre d'essai html
+//affiche le nombre d'essais html
 function AfficheEssai(nbEssai) {
     var div = document.getElementById("Zonejeu")
     var p = document.createElement("p");
@@ -151,31 +243,6 @@ function AfficheEssai(nbEssai) {
     document.body.appendChild(divmain);
 }
 
-//affiche la zone d'entree html
-function Input() {
-    var div = document.createElement("div");
-    div.id = "input"
-    divmain.appendChild(div)
-    input = document.createElement("input");
-    input.type = "text"
-    input.id = "lettre"
-    input.maxLength = "1"
-    div.appendChild(input)
-    document.body.appendChild(divmain);
-}
-
-//recupere la valeur entree dans la zone de texte 
-function getInputValue() {
-    input.onchange = function () {
-        Jeu(input.value.toUpperCase())
-        clearInput()
-    }
-}
-
-//efface la zone d'entree
-function clearInput() {
-    input.value = "";
-}
 
 //jeu du pendu html
 function Jeu(lettre) {
@@ -231,7 +298,7 @@ function ClearPage() {
     }
 }
 
-//affiche le clavien en html
+//affiche le clavier en html
 function Clavier() {
     var div = document.createElement("div");
     div.id = "Zoneclavier"
@@ -261,11 +328,15 @@ function Clavier() {
 //recupere la lettre selectionner sur le clavier 
 function SelectClavierWord() {
     var table = document.getElementById("clavier")
-    table.onclick = function (event) {
+    var onclick = function (event) {
         var target = event.target;
         var lettre = target.id
         Jeu(lettre)
-    }
+    };
+	table.addEventListener("click", onclick);
+	if (VerifGagne(secret) || nbEssai >= 10) {
+		table.removeEventListener("click", this.onclick);
+	}
 }
 
 // Fonction principale
@@ -303,8 +374,7 @@ function main() {
 Init(mot)
 Clavier()
 SelectClavierWord()
-Input()
-getInputValue()
+afficherImage(nbEssai);
 
 
 

@@ -1,5 +1,5 @@
 // Définir la date limite
-var countDownDate = new Date().getTime() + (5 * 60 * 1000);
+var countDownDate = new Date().getTime() + (2 * 60 * 1000);
 
 // Mettre à jour le compte à rebours toutes les secondes
 var x = setInterval(function() {
@@ -20,6 +20,6 @@ var x = setInterval(function() {
   // Si la date limite est dépassée, afficher "EXPIRÉ"
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRÉ";
+    document.getElementById("countdown").innerHTML = "Temps écoulé !";
   }
 }, 1000);
