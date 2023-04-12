@@ -13,6 +13,7 @@ var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 var alph = 0
 const score = calculeScore(mot);
 console.log(`Le mot "${mot}" vaut ${score} points`);
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 /*
@@ -68,6 +69,7 @@ function remplacerCaracteresSpeciaux(chaine) {
     return nouvelleChaine;
   }
 
+// Fonction qui calcule le score du mot à deviner
 function calculeScore(mot) {
     let score = 0;
     const points = {
@@ -86,6 +88,17 @@ function calculeScore(mot) {
     }
     return score;
   }
+
+// Fonction qui renvoie la difficulté du mot en fonction de son score:
+// 100: Facile
+// 200: Normal
+// 300: Difficile
+function calculDifficulté(mot) {
+    let score = calculeScore(mot);
+    if (score < 10) return 100;
+    else if (score < 20) return 200;
+    else return 300;
+}
 
 // Fonction qui renvoie la lettre entrée au clavier
 function KeyPressed(event) {
@@ -401,8 +414,7 @@ function main() {
         console.log("nombre d'essai : " + tmp)
     }
 }
-
-
+//console.log(difficulté);
 Init(mot)
 Clavier()
 SelectClavierWord()
