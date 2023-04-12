@@ -18,18 +18,12 @@
 
 ## Avancement :
 ### Jeu : 
-- Déroulement du jeu : <br>
-Une gestion de caractère spéciaux est mise en place, notamment pour les caractères : "é", "è" et "à".
-Une changement de style été fait pour la page du jeu.
-Le système de score a été mis en place, qui calcule la difficulté du mot et attribue un score au joueur.
-Un timer qui se lance au début de la partie a été créé.
-L'ajout des règles du jeu.
+Hassan a implémenté une fonction afin de gérer les caractères spéciaux, notamment les caractères : "é", "è" et "à". Il a effectué un changement de style sur la page du jeu et a créé une base de données sur Firebase avec diffèrent thème (couleurs, vêtements ...), et l'a lié avec l'application, dorénavant les mots son générer aléatoirement dans la base de données couleurs, et les autres thèmes seront ajouter par la suite. <br>
 
+Ronan a implémenté la méthode qui permet à un joueur d'ajouter un mot à notre base de données.<br>
 
-- Base de données : <br>
-Hassan a créé la base de données sur Firebase, et l'a lié avec l'application.
-Un utilisateur peut créer un compte et se connecter, à traver Firebase.
-L'implémentation de la méthode qui permet à un joueur d'ajouter un mot à notre base de données.
+Thomas a implémenté un listener qui permet de taper les lettres depuis le clavier, et il a retiré la barre d'input. Il a ajouté une fonction qui affiche une image correspondant au nombre d'erreurs pendant le jeu.
+Il a également corrigé le CSS qui ne s'activait pas sur certaines pages.
 
 ## Bibliographie :
 
@@ -42,7 +36,5 @@ L'implémentation de la méthode qui permet à un joueur d'ajouter un mot à not
 - [Documentation sur Firestore](https://firebase.google.com/docs/firestore)
 
 ## Problèmes: 
-- Répartition des tâches: <br>
-On a eu une difficulté en terme de répartition des tâches, et ça a causé un lent rendement, ainsi que les objectifs très vagues par rapport au temps dédié
 - Disponibilité des membres: <br>
 Tous les membres du groupe passent des interrogations et on plusieurs projets à rendre, ce qui fait que la communication n'était pas comme attendu.
