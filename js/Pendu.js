@@ -1,23 +1,19 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 var mot = ""
-
 var secret = []
-var tmp = ""
 var nbEssai = 0
 var lettreUtilise = []
-var lettre = "o"
 var Present = false
-var divmain = document.querySelector("div")
-divmain.id = "main"
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var alph = 0
+var divmain = document.querySelector("div")
+divmain.id = "main"
 
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-import { getDatabase, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -41,13 +37,14 @@ const starCountRef = ref(database, 'couleurs');
 onValue(starCountRef, (snapshot) => {
     data = snapshot.val(); // stockage des données dans la variable globale
     console.log(data);
-    mot = data[Math.floor(Math.random() * data.length) + 1]
+    mot = data[Math.floor(Math.random() * data.length)];
+    mot = remplacerCaracteresSpeciaux(mot);
     mot = mot.toUpperCase();
+    console.log(mot);
     Init(mot);
     Clavier()
     SelectClavierWord()
-    afficherImage(nbEssai);
-    
+    afficherImage(nbEssai); 
 });
 
 
@@ -55,6 +52,21 @@ onValue(starCountRef, (snapshot) => {
 const score = calculeScore(mot);
 console.log(`Le mot "${mot}" vaut ${score} points`);
 
+function remplacerCaracteresSpeciaux(chaine) {
+    let nouvelleChaine = chaine;
+    nouvelleChaine = nouvelleChaine.replace(/[éèêë]/g, 'e');
+    nouvelleChaine = nouvelleChaine.replace(/[àâæ]/g, 'a');
+    nouvelleChaine = nouvelleChaine.replace(/[ïî]/g, 'i');
+    nouvelleChaine = nouvelleChaine.replace(/[ôœ]/g, 'o');
+    nouvelleChaine = nouvelleChaine.replace(/[ùûü]/g, 'u');
+    nouvelleChaine = nouvelleChaine.replace(/[ç]/g, 'c');
+    nouvelleChaine = nouvelleChaine.replace(/[Ññ]/g, 'n');
+    nouvelleChaine = nouvelleChaine.replace(/[á]/g, 'a');
+    nouvelleChaine = nouvelleChaine.replace(/[í]/g, 'i');
+    nouvelleChaine = nouvelleChaine.replace(/[ó]/g, 'o');
+    nouvelleChaine = nouvelleChaine.replace(/[úü]/g, 'u');
+    return nouvelleChaine;
+  }
 
 function calculeScore(mot) {
     let score = 0;
@@ -134,6 +146,14 @@ function Init(mot) {
             secret[i] = "-"
             td = document.createElement("td");
             td.innerHTML = "-";
+            td.className = i
+            table.appendChild(td);
+
+        }
+        else if (mot[i] == "'") {
+            secret[i] = "'"
+            td = document.createElement("td");
+            td.innerHTML = "'";
             td.className = i
             table.appendChild(td);
 
@@ -372,7 +392,17 @@ function SelectClavierWord() {
     var onclick = function (event) {
         var target = event.target;
         var lettre = target.id
-        Jeu(lettre)
+        if (lettre == "touche") {
+            return
+        }
+        else if (lettre == "clavier") {
+            return
+        }
+        else if (lettre == "Zoneclavier") {
+            return
+        }
+        else 
+            Jeu(lettre)
     };
 	table.addEventListener("click", onclick);
 	if (VerifGagne(secret) || nbEssai >= 10) {
@@ -380,36 +410,6 @@ function SelectClavierWord() {
 	}
 }
 
-// Fonction principale
-
-function main() {
-    Init(mot)
-    while (true) {
-        Affiche(secret)
-        console.log("mots a trouver : " + mot)
-        console.log(tmp)
-        lettre = prompt("Entrez une lettre :")
-        check(mot, lettre)
-        VerifLettre(lettre)
-        if (Present == true) {
-            if (VerifGagne(secret)) {
-                console.log("Gagné")
-                break
-            }
-        }
-        else {
-            nbEssai++
-            if (VerifPerdu(nbEssai)) {
-                console.log("Perdu")
-                break
-            }
-        }
-        AfficheLettreUtilise(lettreUtilise)
-        console.log("Lettre utilisé : " + tmp)
-        AfficheEssai(nbEssai)
-        console.log("nombre d'essai : " + tmp)
-    }
-}
 
 
 
