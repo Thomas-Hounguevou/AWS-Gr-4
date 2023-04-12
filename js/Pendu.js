@@ -1,16 +1,21 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var mot = ""
+var mot = "Hello World"
+mot = mot.toUpperCase()
 var secret = []
+var tmp = ""
 var nbEssai = 0
 var lettreUtilise = []
+var lettre = "o"
 var Present = false
-var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-var alph = 0
 var divmain = document.querySelector("div")
 divmain.id = "main"
-
-
+var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var alph = 0
+const score = calculeScore(mot);
+console.log(`Le mot "${mot}" vaut ${score} points`);
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/*
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
@@ -46,12 +51,7 @@ onValue(starCountRef, (snapshot) => {
     SelectClavierWord()
     afficherImage(nbEssai); 
 });
-
-
-
-const score = calculeScore(mot);
-console.log(`Le mot "${mot}" vaut ${score} points`);
-
+*/
 function remplacerCaracteresSpeciaux(chaine) {
     let nouvelleChaine = chaine;
     nouvelleChaine = nouvelleChaine.replace(/[éèêë]/g, 'e');
@@ -101,6 +101,7 @@ function KeyPressed(event) {
         // Met à jour l'affichage des erreurs
         if (!Present) {
 			nbEssai++;
+            afficherImage(nbEssai)
 			UpdateEssai();
 		  }
 			
@@ -130,7 +131,6 @@ function Init(mot) {
     div.id = "Zonejeu"
     divmain.appendChild(div)
     var table = document.createElement("table");
-    table.id = "motCache"
     var td = document.createElement("td");
     div.appendChild(table);
 	document.addEventListener("keydown", KeyPressed);
@@ -151,14 +151,6 @@ function Init(mot) {
             table.appendChild(td);
 
         }
-        else if (mot[i] == "'") {
-            secret[i] = "'"
-            td = document.createElement("td");
-            td.innerHTML = "'";
-            td.className = i
-            table.appendChild(td);
-
-        }
         else {
             secret[i] = "_"
             td = document.createElement("td");
@@ -174,44 +166,19 @@ function Init(mot) {
     AfficheLettreUtilise(lettreUtilise)
 }
 
+
 // fonction qui affiche l'image correspondant au nombre d'erreurs actuel
 function afficherImage(nbEssai) {
-    var image = document.getElementById("image");
-    switch(nbEssai) {
-        case 1:
-            image.src = "../images/1.jpg";
-        break;
-        case 2:
-            image.src = "../images/2.jpg";
-        break;
-        case 3:
-            image.src = "../images/3.jpg";
-        break;
-        case 4:
-            image.src = "../images/4.jpg";
-        break;
-        case 5:
-            image.src = "../images/5.jpg";
-        break;
-        case 6:
-            image.src = "../images/6.jpg";
-        break;
-        case 7:
-            image.src = "../images/7.jpg";
-        break;
-        case 8:
-            image.src = "../images/8.jpg";
-        break;
-        case 9:
-            image.src = "../images/9.jpg";
-        break;
-        case 10:
-            image.src = "../images/10.jpg";
-        break;
-    	default:
-            image.src = "../images/0.png";
+    if (nbEssai < 0 || nbEssai > 10) {
+      console.error("Le nombre d'essais doit être entre 1 et 10");
+      return;
     }
+  
+    let image = document.getElementById("image");
+    image.src = "../images/" + nbEssai + ".jpg";
+    console.log("L'image {image.src} doit être affichée")
   }
+  
   
 
 // Met à jour l'affichage nombre d'essais en html
@@ -320,6 +287,7 @@ function Jeu(lettre) {
     }
     else {
         nbEssai++
+        afficherImage(nbEssai)
         if (VerifPerdu(nbEssai)) {
             ClearPage()
             Perdu()
@@ -349,7 +317,7 @@ function Perdu() {
     div.id = "perdu"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Vous avez Perdu ! Le mot était : " + mot
+    p.innerHTML = "Perdu"
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -395,17 +363,7 @@ function SelectClavierWord() {
     var onclick = function (event) {
         var target = event.target;
         var lettre = target.id
-        if (lettre == "touche") {
-            return
-        }
-        else if (lettre == "clavier") {
-            return
-        }
-        else if (lettre == "Zoneclavier") {
-            return
-        }
-        else 
-            Jeu(lettre)
+        Jeu(lettre)
     };
 	table.addEventListener("click", onclick);
 	if (VerifGagne(secret) || nbEssai >= 10) {
@@ -413,9 +371,42 @@ function SelectClavierWord() {
 	}
 }
 
+// Fonction principale
+
+function main() {
+    Init(mot)
+    while (true) {
+        Affiche(secret)
+        console.log("mots a trouver : " + mot)
+        console.log(tmp)
+        lettre = prompt("Entrez une lettre :")
+        check(mot, lettre)
+        VerifLettre(lettre)
+        if (Present == true) {
+            if (VerifGagne(secret)) {
+                console.log("Gagné")
+                break
+            }
+        }
+        else {
+            nbEssai++
+            if (VerifPerdu(nbEssai)) {
+                console.log("Perdu")
+                break
+            }
+        }
+        AfficheLettreUtilise(lettreUtilise)
+        console.log("Lettre utilisé : " + tmp)
+        AfficheEssai(nbEssai)
+        console.log("nombre d'essai : " + tmp)
+    }
+}
 
 
-
+Init(mot)
+Clavier()
+SelectClavierWord()
+afficherImage(nbEssai);
 
 
 

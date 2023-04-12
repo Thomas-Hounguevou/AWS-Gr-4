@@ -22,6 +22,9 @@ Hassan a implémenté une fonction afin de gérer les caractères spéciaux, not
 
 Ronan a implémenté la méthode qui permet à un joueur d'ajouter un mot à notre base de données.<br>
 
+Thomas a implémenté un listener qui permet de taper les lettres depuis le clavier, et il a retiré la barre d'input. Il a ajouté une fonction qui affiche une image correspondant au nombre d'erreurs pendant le jeu.
+Il a également corrigé le CSS qui ne s'activait pas sur certaines pages.
+
 ## Bibliographie :
 
 - [Documentation du Socket.io](https://socket.io/docs/v4/)
