@@ -15,10 +15,10 @@ const score = calculeScore(mot);
 console.log(`Le mot "${mot}" vaut ${score} points`);
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-/*
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import { getDatabase, ref, onValue,get,child } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -34,14 +34,13 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
 
-let data = null; // création de la variable globale
 
-const starCountRef = ref(database, 'couleurs');
-onValue(starCountRef, (snapshot) => {
-    data = snapshot.val(); // stockage des données dans la variable globale
-    console.log(data);
+const dbRef = ref(getDatabase(app));
+get(child(dbRef, `couleurs`)).then((snapshot) => {
+  if (snapshot.exists()) {
+    console.log(snapshot.val());
+    const data = snapshot.val();
     mot = data[Math.floor(Math.random() * data.length)];
     mot = remplacerCaracteresSpeciaux(mot);
     mot = mot.toUpperCase();
@@ -50,8 +49,14 @@ onValue(starCountRef, (snapshot) => {
     Clavier()
     SelectClavierWord()
     afficherImage(nbEssai); 
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
 });
-*/
+
+
 function remplacerCaracteresSpeciaux(chaine) {
     let nouvelleChaine = chaine;
     nouvelleChaine = nouvelleChaine.replace(/[éèêë]/g, 'e');
@@ -403,10 +408,7 @@ function main() {
 }
 
 
-Init(mot)
-Clavier()
-SelectClavierWord()
-afficherImage(nbEssai);
+
 
 
 
