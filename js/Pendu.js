@@ -178,36 +178,38 @@ function Init(mot) {
 function afficherImage(nbEssai) {
     var image = document.getElementById("image");
     switch(nbEssai) {
-      case 1:
-        image.src = "../images/1.jpg";
+        case 1:
+            image.src = "../images/1.jpg";
         break;
-      case 2:
-        image.src = "../images/2.jpg";
+        case 2:
+            image.src = "../images/2.jpg";
         break;
-      case 3:
-        image.src = "../images/3.jpg";
+        case 3:
+            image.src = "../images/3.jpg";
         break;
-      case 4:
-        image.src = "../images/4.jpg";
+        case 4:
+            image.src = "../images/4.jpg";
         break;
-      case 5:
-        image.src = "../images/5.jpg";
+        case 5:
+            image.src = "../images/5.jpg";
         break;
-      case 6:
-        image.src = "../images/6.jpg";
+        case 6:
+            image.src = "../images/6.jpg";
         break;
-	  case 7:
-        image.src = "../images/7.jpg";
+        case 7:
+            image.src = "../images/7.jpg";
         break;
-      case 8:
-        image.src = "../images/8.jpg";
+        case 8:
+            image.src = "../images/8.jpg";
         break;
-      case 9:
-        image.src = "../images/9.jpg";
+        case 9:
+            image.src = "../images/9.jpg";
         break;
-	  case 10:
-		image.src = "../images/10.jpg";
-		break;		
+        case 10:
+            image.src = "../images/10.jpg";
+        break;
+    	default:
+            image.src = "../images/0.png";
     }
   }
   
