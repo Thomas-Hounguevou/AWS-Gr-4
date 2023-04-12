@@ -130,6 +130,7 @@ function Init(mot) {
     div.id = "Zonejeu"
     divmain.appendChild(div)
     var table = document.createElement("table");
+    table.id = "motCache"
     var td = document.createElement("td");
     div.appendChild(table);
 	document.addEventListener("keydown", KeyPressed);
