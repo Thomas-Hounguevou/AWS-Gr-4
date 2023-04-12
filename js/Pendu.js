@@ -1,6 +1,6 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var mot = "Hello World"
-mot = mot.toUpperCase()
+var mot = ""
+
 var secret = []
 var tmp = ""
 var nbEssai = 0
@@ -11,9 +11,50 @@ var divmain = document.querySelector("div")
 divmain.id = "main"
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var alph = 0
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { getDatabase, set, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyCw2s6XP0q-Bx1okAH5iqYwyr5V5N95gJ8",
+    authDomain: "aws-gr4.firebaseapp.com",
+    databaseURL: "https://aws-gr4-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "aws-gr4",
+    storageBucket: "aws-gr4.appspot.com",
+    messagingSenderId: "421758284621",
+    appId: "1:421758284621:web:08b34ada45f92619197d04",
+    measurementId: "G-H3K18LKN1Q"
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+let data = null; // création de la variable globale
+
+const starCountRef = ref(database, 'couleurs');
+onValue(starCountRef, (snapshot) => {
+    data = snapshot.val(); // stockage des données dans la variable globale
+    console.log(data);
+    mot = data[Math.floor(Math.random() * data.length) + 1]
+    mot = mot.toUpperCase();
+    Init(mot);
+    Clavier()
+    SelectClavierWord()
+    afficherImage(nbEssai);
+    
+});
+
+
+
 const score = calculeScore(mot);
 console.log(`Le mot "${mot}" vaut ${score} points`);
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 function calculeScore(mot) {
     let score = 0;
@@ -285,7 +326,7 @@ function Perdu() {
     div.id = "perdu"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Perdu"
+    p.innerHTML = "Vous avez Perdu ! Le mot était : " + mot
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -371,10 +412,7 @@ function main() {
 }
 
 
-Init(mot)
-Clavier()
-SelectClavierWord()
-afficherImage(nbEssai);
+
 
 
 
