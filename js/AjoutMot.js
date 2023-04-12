@@ -7,7 +7,7 @@ firebase.initializeApp({
 document.querySelector('input[type="submit"]').addEventListener('click', function() {
     var mot = document.getElementById('Requete').value;
     console.log(mot);
-    const db = firebase.firestore().collection("MotsSoumis").add({
+    const basededonnee = firebase.firestore().collection("MotsSoumis").add({
         mot: mot
     })
     .then(function(docRef) {

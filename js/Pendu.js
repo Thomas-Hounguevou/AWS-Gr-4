@@ -410,11 +410,3 @@ function SelectClavierWord() {
 		table.removeEventListener("click", this.onclick);
 	}
 }
-
-
-
-
-
-
-
-
