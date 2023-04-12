@@ -40,11 +40,34 @@
 
 #Retour{
     background-color: rgb(108, 211, 160);
-    border: 1px solid black;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    color: white;
 }
+
+#Retour:hover,#Retour:focus{
+    outline-offset: 3px;
+    outline: 2px solid rgb(108, 211, 160);
+    border: none;
+    transition: 150ms;
+}
+
+
 #ChangeMot{
     background-color: rgb(108, 211, 160);
-    border: 1px solid black;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+
+}
+
+#ChangeMot:hover,#ChangeMot:focus{
+    outline-offset: 3px;
+    outline: 2px solid rgb(108, 211, 160);
+    border: none;
+    transition: 150ms;
 }
 
 #motCache > td {
@@ -52,7 +75,6 @@
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
-
     font-size: large;
     font-weight: bold;
     color: black;
