@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #a5d7e8;
+}
+
+header > h1 {
+  color: #0b2447;
+}
+
+header > nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+header > nav > a {
+  color: #0b2447;
+  font-weight: bold;
+}
+
+header > button {
+  all: unset;
+  background-color: #0b2447;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+header > button > a {
+  all: unset;
+}
+
+header > button:hover {
+  color: #0b2447;
+  padding: 9px 15px;
+  background-color: white;
+  border: 1px solid #0b2447;
+}
