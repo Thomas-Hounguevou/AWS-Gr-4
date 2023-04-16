@@ -1,24 +1,22 @@
 import React from 'react';
-import './footer.css';
-import HomeIcon from '@mui/icons-material/Home';
-import LoginIcon from '@mui/icons-material/Login';
-import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import { Link } from 'react-router-dom';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import { HomeOutlined, LeaderboardOutlined, LibraryBooksOutlined } from '@mui/icons-material';
+
+import './footer.css';
 
 const Footer = () => {
   return (
     <footer>
       <nav>
         <Link to="/">
-          <HomeIcon /> Accueil
+          <HomeOutlined /> Accueil
         </Link>
         <Link to="/leaderboard">
-          <LeaderboardIcon />
+          <LeaderboardOutlined />
           Leaderboard
         </Link>
         <Link to="/regles">
-          <LibraryBooksIcon />
+          <LibraryBooksOutlined />
           Règles et ajout de mots
         </Link>
       </nav>
