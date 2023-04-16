@@ -19,6 +19,7 @@ footer > nav > a {
   gap: 5px;
   color: #0b2447;
   text-decoration: none;
+  font-weight: bold;
 }
 
 footer > nav > a > svg {
