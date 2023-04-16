@@ -1,0 +1,46 @@
+footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #a5d7e8;
+}
+
+footer > nav {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+}
+
+footer > nav > a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #0b2447;
+  text-decoration: none;
+}
+
+footer > nav > a > svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+footer > div {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+}
+
+footer > div > h3 {
+  color: #19376d;
+}
+
+footer > div > ul {
+  list-style-type: none;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+}
