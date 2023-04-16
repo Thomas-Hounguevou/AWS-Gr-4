@@ -1,9 +1,8 @@
-
+import MainRoutes from './routes/Main.routes';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return null
+  return <MainRoutes />;
 }
 
-export default App
+export default App;

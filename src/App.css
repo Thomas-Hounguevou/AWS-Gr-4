@@ -1,0 +1,56 @@
+:root {
+  --dark-blue: rgb(11, 36, 71);
+  --primary-blue: rgb(25, 55, 109);
+  --secondary--blue: rgb(87, 108, 188);
+  --sea--blue: rgb(165, 215, 232);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+h1,
+h1,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:-webkit-any-link:active {
+  color: unset;
+}
+
+main {
+  padding: 32px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+}
