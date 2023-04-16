@@ -3,7 +3,7 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: #a5d7e8;
+  background-color: var(--bg--blue);
 }
 
 footer > nav {
@@ -17,7 +17,7 @@ footer > nav > a {
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #0b2447;
+  color: var(--dark-blue);
   text-decoration: none;
   font-weight: bold;
 }
@@ -35,7 +35,7 @@ footer > div {
 }
 
 footer > div > h3 {
-  color: #19376d;
+  color: var(--primary-blue);
 }
 
 footer > div > ul {

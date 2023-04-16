@@ -2,11 +2,11 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: #a5d7e8;
+  background-color: var(--bg--blue);
 }
 
 header > h1 {
-  color: #0b2447;
+  color: var(--dark-blue);
 }
 
 header > nav {
@@ -16,13 +16,13 @@ header > nav {
 }
 
 header > nav > a {
-  color: #0b2447;
+  color: var(--dark-blue);
   font-weight: bold;
 }
 
 header > button {
   all: unset;
-  background-color: #0b2447;
+  background-color: var(--dark-blue);
   color: white;
   padding: 10px 16px;
   border-radius: 6px;
@@ -38,8 +38,8 @@ header > button > a {
 }
 
 header > button:hover {
-  color: #0b2447;
+  color: var(--dark-blue);
   padding: 9px 15px;
   background-color: white;
-  border: 1px solid #0b2447;
+  border: 1px solid var(--dark-blue);
 }
