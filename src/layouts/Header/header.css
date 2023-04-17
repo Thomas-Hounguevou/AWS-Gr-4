@@ -23,7 +23,7 @@ header > nav > a {
 header > button {
   all: unset;
   background-color: var(--dark-blue);
-  color: white;
+  color: var(--white);
   padding: 10px 16px;
   border-radius: 6px;
   cursor: pointer;
@@ -40,6 +40,6 @@ header > button > a {
 header > button:hover {
   color: var(--dark-blue);
   padding: 9px 15px;
-  background-color: white;
+  background-color: var(--white);
   border: 1px solid var(--dark-blue);
 }
