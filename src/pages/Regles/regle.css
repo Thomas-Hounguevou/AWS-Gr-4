@@ -1,0 +1,68 @@
+.regle_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+
+  /* background-color: var(--bg--blue); */
+}
+
+.card {
+  box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.card > div > input {
+  width: 400px;
+  border: unset;
+  display: flex;
+  align-items: center;
+  outline: unset;
+  height: 42px;
+  padding: 16px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  box-shadow: inset -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card > div > button {
+  all: unset;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.card > div > button:hover {
+  color: var(--dark-blue);
+  padding: 9px 15px;
+  background-color: var(--white);
+  border: 1px solid var(--dark-blue);
+}
+
+.card > div > button > a {
+  all: unset;
+}
