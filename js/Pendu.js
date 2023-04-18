@@ -105,6 +105,15 @@ function calculDifficulté(mot) {
     else return 300;
 }
 
+// Fonction qui demande le nom d'un utilisateur pour ajouter son score à la bdd
+function enregistrerscore(score,mot) {
+    let nom = prompt("Entrer un pseudonyme :");
+    const basededonnee = firebase.firestore().collection("ScoreJoueur").add({
+        Nom: nom,
+        Score: score,
+        Mot: mot
+    })
+  }
 // Fonction qui renvoie la lettre entrée au clavier
 function KeyPressed(event) {
     let lettre = event.key.toUpperCase();
@@ -301,6 +310,7 @@ function Jeu(lettre) {
         if (VerifGagne(secret)) {
             ClearPage()
             Gagner()
+            enregistrerscore(score, mot)
         }
     }
     else {
