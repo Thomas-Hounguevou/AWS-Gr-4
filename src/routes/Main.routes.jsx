@@ -6,6 +6,7 @@ import LeaderBoard from '../pages/LeaderBoard';
 import { AuthLayout } from '../pages/auth/AuthLayout';
 import SignIn from '../pages/auth/SignIn/SignIn';
 import SignUp from '../pages/auth/SignUp/SignUp';
+import Jeu from '../pages/Jeu';
 
 const MainRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const MainRoutes = () => {
         <Route path="/" element={<Accueil />} />
         <Route path="/regles" element={<Regles />} />
         <Route path="/leaderboard" element={<LeaderBoard />} />
+        <Route path="/jeu" element={<Jeu />} />
         <Route path="*" element={<Accueil />} />
       </Route>
       <Route element={<AuthLayout />}>

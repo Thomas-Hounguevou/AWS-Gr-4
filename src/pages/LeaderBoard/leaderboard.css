@@ -1,0 +1,37 @@
+.leaderboard_container  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaderboard_container > div {
+  box-shadow: 0px 1px 14px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.leaderboard_container > div > h1 {
+  color: var(--dark-blue);
+}
+
+.leaderboard_list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.leaderboard_list > li {
+  display: flex;
+  gap: 100px;
+  font-size: 32px;
+}
+
+.leaderboard_list > li > span:last-of-type {
+  justify-self: flex-end;
+}
