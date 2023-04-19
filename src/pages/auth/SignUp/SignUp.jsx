@@ -1,21 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../config/firebase';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required').email('Email is invalid'),
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
-  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { register, handleSubmit, formState, getValues } = useForm(formOptions);
   const { errors } = formState;
   function onSubmit(data) {
-    // display form data on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
-    return false;
+    createUserWithEmailAndPassword(auth, getValues('email'), getValues('password'))
+      .then(userCredential => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        navigate('/signin');
+        // ...
+      })
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode);
+        console.log(errorCode, errorMessage);
+        // ..
+      });
   }
   return (
     <div className="signin">
@@ -27,7 +42,7 @@ const SignUp = () => {
         </div>
         <div className="input_container">
           <label>Mot de passe</label>
-          <input placeholder="**********" type="password" />
+          <input placeholder="**********" type="password" {...register('password')} />
         </div>
         <button type="submit">S'inscrire</button>
       </form>
