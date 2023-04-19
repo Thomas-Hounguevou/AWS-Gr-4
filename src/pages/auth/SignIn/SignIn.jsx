@@ -42,13 +42,9 @@ const SignIn = () => {
       .catch(error => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
       });
   }
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
   return (
     <div className="signin">
       <h3>Connexion</h3>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from '../layouts';
 import Accueil from '../pages/Accueil';
@@ -8,6 +9,7 @@ import SignIn from '../pages/auth/SignIn/SignIn';
 import SignUp from '../pages/auth/SignUp/SignUp';
 import Jeu from '../pages/Jeu';
 import Room from '../pages/Room';
+import ProtectedRuote from '../components/ProtectedRoute';
 
 const MainRoutes = () => {
   return (
@@ -17,7 +19,16 @@ const MainRoutes = () => {
         <Route path="/regles" element={<Regles />} />
         <Route path="/leaderboard" element={<LeaderBoard />} />
         <Route path="/jeu" element={<Jeu />} />
-        <Route path="/room" element={<Room />} />
+
+        <Route
+          path="/room"
+          element={
+            <ProtectedRuote>
+              <Room />
+            </ProtectedRuote>
+          }
+        />
+
         <Route path="*" element={<Accueil />} />
       </Route>
       <Route element={<AuthLayout />}>

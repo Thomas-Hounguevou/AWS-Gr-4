@@ -32,10 +32,6 @@ function Accueil() {
     }
   }, [option]);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <div className="acceuil">
       <img src={Pendu} alt="pendu" />

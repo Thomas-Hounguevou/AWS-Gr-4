@@ -20,7 +20,7 @@ const SignUp = () => {
       .then(userCredential => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+
         navigate('/signin');
         // ...
       })
@@ -28,7 +28,7 @@ const SignUp = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode);
-        console.log(errorCode, errorMessage);
+
         // ..
       });
   }

@@ -98,9 +98,6 @@ const Jeu = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(selectedWord);
-  }, [selectedWord]);
   return (
     <>
       {words.length ? (
