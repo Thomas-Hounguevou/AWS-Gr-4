@@ -1,12 +1,9 @@
 {
   "hosting": {
     "public": "dist",
-    "site": "react-hangman",
+    "site": "react-hangman-id",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "hosting": {
-      "site": "react-hangman",
-      "public": "dist"
-    },
+
     "rewrites": [
       {
         "source": "**",
