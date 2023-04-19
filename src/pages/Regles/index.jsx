@@ -9,16 +9,17 @@ const Regles = () => {
   const [hint, showHint] = React.useState(false);
 
   const addWordToDB = () => {
-    addDoc(collection(db, 'MotsSoumis'), {
-      mot: word,
-    })
-      .then(value => {
-        setWord('');
-        showHint(true);
+    if (word.length > 0)
+      addDoc(collection(db, 'MotsSoumis'), {
+        mot: word,
       })
-      .catch(reason => {
-        alert(reason);
-      });
+        .then(value => {
+          setWord('');
+          showHint(true);
+        })
+        .catch(reason => {
+          alert(reason);
+        });
   };
 
   useEffect(() => {
