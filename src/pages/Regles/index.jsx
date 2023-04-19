@@ -1,8 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './regle.css';
 import { Link } from 'react-router-dom';
+import { db } from '../../config/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 const Regles = () => {
+  const [word, setWord] = React.useState('');
+  const [hint, showHint] = React.useState(false);
+
+  const addWordToDB = () => {
+    addDoc(collection(db, 'MotsSoumis'), {
+      mot: word,
+    })
+      .then(value => {
+        setWord('');
+        showHint(true);
+      })
+      .catch(reason => {
+        alert(reason);
+      });
+  };
+
+  useEffect(() => {
+    if (hint) {
+      setTimeout(() => {
+        showHint(false);
+      }, 3000);
+    }
+  }, [hint]);
+
   return (
     <div className="regle_container">
       <div className="card">
@@ -22,8 +48,15 @@ const Regles = () => {
 
         <div>
           <h2>Entrez le mot que vous souhaiteriez ajouter</h2>
-          <input type="text" />
-          <button>Confirmer</button>
+          <input
+            value={word}
+            onChange={e => {
+              setWord(e.target.value);
+            }}
+            type="text"
+          />
+          {hint && <p>le mot a été ajouté avec succès</p>}
+          <button onClick={addWordToDB}>Confirmer</button>
         </div>
       </div>
     </div>
