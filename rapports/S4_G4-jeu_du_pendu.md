@@ -13,7 +13,7 @@
 
 ## Avancement :
 ### Jeu : 
-Ronan a travailler sur le leaderboard, il a implementer une fonction pour ajouter dans la BDD les données necessaires et a ecrit un script pour crée le leaderboard a partir de cette BDD <br>
+Ronan a travaillé sur le leader board, il a implémenté une fonction pour ajouter dans la BDD les données nécessaires et a écrit un script pour créer le leader board à partir de cette BDD <br>
 
 Hassan a fait des recherches sur les pratiques à mettre en oeuvre pour avoir un site sécuriser afin de garantir un minimum de sécurité et éviter des leaks de données personnelles ainsi que de garder le mot a trouvé non trouvable et non modifiable dans le code<br>
 
