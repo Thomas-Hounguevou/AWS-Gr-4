@@ -43,7 +43,7 @@ const Regles = () => {
             règles, cliquez sur le bouton "J'ai compris" ci-dessous pour jouer:
           </p>
           <button>
-            <Link to="/jeu">J'ai Compris</Link>
+            <Link to="/">J'ai Compris</Link>
           </button>
         </div>
 

@@ -2,7 +2,7 @@ footer {
   margin-top: auto;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 16px;
   background-color: var(--bg--blue);
 }
 
@@ -43,5 +43,5 @@ footer > div > ul {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
