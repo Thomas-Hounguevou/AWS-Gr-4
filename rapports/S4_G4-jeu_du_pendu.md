@@ -17,6 +17,7 @@ Ronan a travaillé sur le leader board, il a implémenté une fonction pour ajou
 
 Hassan a fait des recherches sur les pratiques à mettre en oeuvre pour avoir un site sécuriser afin de garantir un minimum de sécurité et éviter des leaks de données personnelles ainsi que de garder le mot a trouvé non trouvable et non modifiable dans le code<br>
 
+Thomas s'est ocupé de l'inscription et de la connexion d'utilisateurs pour pouvoir sauvegarder leurs scores: il s'incrémente à chaque partie du nombre de points qu'il gagne. 
 
 ## Bibliographie :
 
@@ -24,4 +25,4 @@ Hassan a fait des recherches sur les pratiques à mettre en oeuvre pour avoir un
 
 ## Problèmes: 
 - Semaine Chargé de Controle Continue: <br>
-Tous les membres du groupe passent des interrogations et on plusieurs projets à rendre, ce qui fait que la communication n'était pas comme attendu.
+Tous les membres du groupe passent des interrogations et ont plusieurs projets à rendre, ce qui fait que la communication n'était pas comme attendu.
