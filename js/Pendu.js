@@ -1,5 +1,5 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var mot = "Hello World"
+var mot = "lynx"
 mot = mot.toUpperCase()
 var secret = []
 var tmp = ""
@@ -16,7 +16,7 @@ console.log(`Le mot "${mot}" vaut ${score} points`);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+/*
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getDatabase, ref, onValue,get,child } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
@@ -57,7 +57,7 @@ get(child(dbRef, `couleurs`)).then((snapshot) => {
   console.error(error);
 });
 
-
+*/
 function remplacerCaracteresSpeciaux(chaine) {
     let nouvelleChaine = chaine;
     nouvelleChaine = nouvelleChaine.replace(/[éèêë]/g, 'e');
@@ -105,15 +105,6 @@ function calculDifficulté(mot) {
     else return 300;
 }
 
-// Fonction qui demande le nom d'un utilisateur pour ajouter son score à la bdd
-function enregistrerscore(score,mot) {
-    let nom = prompt("Entrer un pseudonyme :");
-    const basededonnee = firebase.firestore().collection("ScoreJoueur").add({
-        Nom: nom,
-        Score: score,
-        Mot: mot
-    })
-  }
 // Fonction qui renvoie la lettre entrée au clavier
 function KeyPressed(event) {
     let lettre = event.key.toUpperCase();
@@ -191,6 +182,7 @@ function Init(mot) {
     document.body.appendChild(divmain);
     AfficheEssai(nbEssai)
     AfficheLettreUtilise(lettreUtilise)
+    AfficheScore(secret)
 }
 
 
@@ -203,7 +195,6 @@ function afficherImage(nbEssai) {
   
     let image = document.getElementById("image");
     image.src = "../images/" + nbEssai + ".jpg";
-    console.log("L'image {image.src} doit être affichée")
   }
   
   
@@ -231,6 +222,25 @@ function check(mot, lettre) {
     }
 
 }
+
+function ScoreActuel(secret) {
+    let score = 0;
+    const points = {
+      'A': 1, 'E': 1, 'I': 1, 'L': 1, 'N': 1, 'O': 1, 'R': 1, 'S': 1, 'T': 1, 'U': 1,
+      'D': 2, 'G': 2, 'M': 2,
+      'B': 3, 'C': 3, 'P': 3,
+      'F': 4, 'H': 4, 'V': 4,
+      'J': 8, 'Q': 8,
+      'K': 10, 'W': 10, 'X': 10, 'Y': 10, 'Z': 10
+    };
+    for (let i = 0; i < secret.length; i++) {
+      const lettre = secret[i].toUpperCase();
+      if (points[lettre]) {
+        score += points[lettre];
+      }
+    }
+    return score;
+} 
 
 /*function Affiche(secret) {
     tmp = ""
@@ -301,6 +311,16 @@ function AfficheEssai(nbEssai) {
     document.body.appendChild(divmain);
 }
 
+// affiche le score actuel du jeu
+function AfficheScore() {
+    var score = ScoreActuel(secret);
+    var div = document.getElementById("Zonescore")
+    var p = document.createElement("p");
+    p.id = "scoreactuel"
+    p.innerHTML = "Score actuel : " + score
+    div.append.body.appendChild(divmain);
+}
+
 
 //jeu du pendu html
 function Jeu(lettre) {
@@ -310,7 +330,6 @@ function Jeu(lettre) {
         if (VerifGagne(secret)) {
             ClearPage()
             Gagner()
-            enregistrerscore(score, mot)
         }
     }
     else {
@@ -334,7 +353,8 @@ function Gagner() {
     div.id = "gagner"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Gagné"
+    p.innerHTML = "Gagné, le mot était bien " + mot
+    + "<br> Votre score est de " + ScoreActuel(secret);
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -345,7 +365,8 @@ function Perdu() {
     div.id = "perdu"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Perdu"
+    p.innerHTML = "Perdu, il fallait trouver " + mot + "..."
+    + "<br> Votre score est de " + ScoreActuel(secret);
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -427,11 +448,17 @@ function main() {
         console.log("Lettre utilisé : " + tmp)
         AfficheEssai(nbEssai)
         console.log("nombre d'essai : " + tmp)
+        AfficheScore(secret)
+        score = ScoreActuel(secret)
+        console.log("score actuel : " + score)
     }
 }
 
 
-
+Init(mot)
+Clavier()
+SelectClavierWord()
+afficherImage(nbEssai);
 
 
 
