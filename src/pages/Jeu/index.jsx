@@ -11,17 +11,19 @@ import { collection, getDoc, getDocs } from 'firebase/firestore';
 import { child, get } from 'firebase/database';
 import { showNotification as show, checkWin } from '../../helper/herlper';
 import { Circles } from 'react-loader-spinner';
+import Countdown from 'react-countdown';
 
 // const words = ['helloworld'];
 // let selectedWord = words[Math.floor(Math.random() * words.length)].trim();
 
 const Jeu = () => {
-  const [playable, setPlayable] = useState(false);
+  const [playable, setPlayable] = useState(true);
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
   const [selectedWord, setSelectedWord] = useState('');
   const [words, setWords] = useState([]);
+  const [timer, setTimer] = useState(Date.now() + 10000);
 
   useEffect(() => {
     const handleKeydown = event => {
@@ -86,6 +88,18 @@ const Jeu = () => {
       {words.length ? (
         <>
           <Header />
+          <div className="game-countdown">
+            <Countdown
+              onComplete={() => {
+                setPlayable(false);
+                show(setShowNotification);
+              }}
+              date={timer}
+              autoStart
+            >
+              <span>le temps est dépassé</span>
+            </Countdown>
+          </div>
           <div className="game-container">
             <Figure wrongLetters={wrongLetters} />
             <WrongLetters wrongLetters={wrongLetters} />
@@ -98,6 +112,7 @@ const Jeu = () => {
             setPlayable={setPlayable}
             playAgain={playAgain}
           />
+          <NotificationComp showNotification={showNotification} />
         </>
       ) : (
         <div className="loader">

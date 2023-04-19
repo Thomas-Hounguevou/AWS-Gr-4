@@ -13,6 +13,7 @@
   flex-direction: column;
   justify-content: center;
   margin-bottom: 20px;
+  font-size: 48px;
 }
 
 .figure-container {
@@ -106,8 +107,18 @@
   border-radius: 10px 10px 0 0;
   padding: 15px 20px;
   position: absolute;
+  left: 40%;
   bottom: -50px;
+  transform: translateXa(-50%);
   transition: transform 0.3s ease-in-out;
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+  -webkit-transform: translateXa(-50%);
+  -moz-transform: translateXa(-50%);
+  -ms-transform: translateXa(-50%);
+  -o-transform: translateXa(-50%);
 }
 
 .notification-container p {
@@ -123,4 +134,16 @@
   align-items: center;
   justify-content: center;
   height: 80vh;
+}
+
+.game-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-countdown > span {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--dark-blue);
 }
