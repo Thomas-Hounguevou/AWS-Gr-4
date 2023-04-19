@@ -2,13 +2,16 @@
   "hosting": {
     "public": "dist",
     "site": "react-hangman-id",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  },
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
   }
 }
