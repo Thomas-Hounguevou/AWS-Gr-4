@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+.acceuil > img {
+  width: 300px;
+  height: 300px;
+}
+
 .acceuil > div > button {
   all: unset;
   background-color: var(--dark-blue);

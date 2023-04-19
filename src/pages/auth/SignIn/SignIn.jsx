@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './signin.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import * as Yup from 'yup';
 import { auth } from '../../../config/firebase';
+import { useRecoilState } from 'recoil';
+import userAtom from '../../../recoil';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -14,8 +16,11 @@ const validationSchema = Yup.object().shape({
 const formOptions = { resolver: yupResolver(validationSchema) };
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit, formState, getValues } = useForm(formOptions);
   const { errors } = formState;
+
+  const [userData, setUser] = useRecoilState(userAtom);
 
   function onSubmit(data) {
     signInWithEmailAndPassword(auth, getValues('email'), getValues('password'))
@@ -23,7 +28,16 @@ const SignIn = () => {
         // Signed in
         const user = userCredential.user;
         // navigate('/home');
-        console.log(user);
+        setUser({
+          ...userData,
+          auth: true,
+          user: {
+            email: user.email,
+            uid: user.uid,
+            accessToken: user.accessToken,
+          },
+        });
+        navigate('/room');
       })
       .catch(error => {
         const errorCode = error.code;
@@ -31,6 +45,10 @@ const SignIn = () => {
         console.log(errorCode, errorMessage);
       });
   }
+
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
   return (
     <div className="signin">
       <h3>Connexion</h3>

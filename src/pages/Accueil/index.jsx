@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Pendu from '../../assets/gif/pendu.gif';
 import './acceuil.css';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import userAtom from '../../recoil';
 function Accueil() {
   const [option, setOption] = React.useState('Facile');
+  const [user, setUser] = useRecoilState(userAtom);
+
+  useEffect(() => {
+    if (option === 'Facile') {
+      setUser({
+        ...user,
+        difficulty: 100,
+      });
+    }
+
+    if (option === 'Normal') {
+      setUser({
+        ...user,
+        difficulty: 200,
+      });
+    }
+
+    if (option === 'Difficile') {
+      setUser({
+        ...user,
+        difficulty: 300,
+      });
+    }
+  }, [option]);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   return (
     <div className="acceuil">
       <img src={Pendu} alt="pendu" />
