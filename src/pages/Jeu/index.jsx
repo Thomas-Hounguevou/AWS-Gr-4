@@ -16,6 +16,22 @@ import Countdown from 'react-countdown';
 // const words = ['helloworld'];
 // let selectedWord = words[Math.floor(Math.random() * words.length)].trim();
 
+function remplacerCaracteresSpeciaux(chaine) {
+  let nouvelleChaine = chaine;
+  nouvelleChaine = nouvelleChaine.replace(/[éèêë]/g, 'e');
+  nouvelleChaine = nouvelleChaine.replace(/[àâæ]/g, 'a');
+  nouvelleChaine = nouvelleChaine.replace(/[ïî]/g, 'i');
+  nouvelleChaine = nouvelleChaine.replace(/[ôœ]/g, 'o');
+  nouvelleChaine = nouvelleChaine.replace(/[ùûü]/g, 'u');
+  nouvelleChaine = nouvelleChaine.replace(/[ç]/g, 'c');
+  nouvelleChaine = nouvelleChaine.replace(/[Ññ]/g, 'n');
+  nouvelleChaine = nouvelleChaine.replace(/[á]/g, 'a');
+  nouvelleChaine = nouvelleChaine.replace(/[í]/g, 'i');
+  nouvelleChaine = nouvelleChaine.replace(/[ó]/g, 'o');
+  nouvelleChaine = nouvelleChaine.replace(/[úü]/g, 'u');
+  return nouvelleChaine;
+}
+
 const Jeu = () => {
   const [playable, setPlayable] = useState(true);
   const [correctLetters, setCorrectLetters] = useState([]);
@@ -23,7 +39,7 @@ const Jeu = () => {
   const [showNotification, setShowNotification] = useState(false);
   const [selectedWord, setSelectedWord] = useState('');
   const [words, setWords] = useState([]);
-  const [timer, setTimer] = useState(Date.now() + 10000);
+  const [timer, setTimer] = useState(Date.now() + 120000);
 
   useEffect(() => {
     const handleKeydown = event => {
@@ -72,7 +88,9 @@ const Jeu = () => {
       if (snapshot.exists()) {
         setWords(() => [...snapshot.val()]);
         setSelectedWord(
-          snapshot.val()[Math.floor(Math.random() * snapshot.val().length)].toLowerCase(),
+          remplacerCaracteresSpeciaux(
+            snapshot.val()[Math.floor(Math.random() * snapshot.val().length)].toLowerCase(),
+          ),
         );
       } else {
         setWords(() => ['helloworld'.toLowerCase()]);
@@ -90,6 +108,15 @@ const Jeu = () => {
           <Header />
           <div className="game-countdown">
             <Countdown
+              renderer={({ hours, minutes, seconds, completed }) => {
+                if (completed) {
+                  // Render a completed state
+                  return <span>le temps est dépassé</span>;
+                } else {
+                  // Render a countdown
+                  return <span>{`${minutes}mm : ${seconds}ss`}</span>;
+                }
+              }}
               onComplete={() => {
                 setPlayable(false);
                 show(setShowNotification);
