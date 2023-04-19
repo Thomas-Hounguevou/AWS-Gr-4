@@ -6,16 +6,22 @@ import WrongLetters from '../../components/WrongLetters';
 import Word from '../../components/Word';
 import Popup from '../../components/PopUp';
 import NotificationComp from '../../components/Notification';
+import { db, dbRef } from '../../config/firebase';
+import { collection, getDoc, getDocs } from 'firebase/firestore';
+import { child, get } from 'firebase/database';
+import { showNotification as show, checkWin } from '../../helper/herlper';
+import { Circles } from 'react-loader-spinner';
 
-const words = ['helloworld'];
-let selectedWord = words[Math.floor(Math.random() * words.length)].trim();
+// const words = ['helloworld'];
+// let selectedWord = words[Math.floor(Math.random() * words.length)].trim();
 
 const Jeu = () => {
-  const [playable, setPlayable] = useState(true);
+  const [playable, setPlayable] = useState(false);
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
-  const [timer, setTimer] = useState('');
+  const [selectedWord, setSelectedWord] = useState('');
+  const [words, setWords] = useState([]);
 
   useEffect(() => {
     const handleKeydown = event => {
@@ -50,25 +56,62 @@ const Jeu = () => {
     setWrongLetters([]);
 
     const random = Math.floor(Math.random() * words.length);
-    selectedWord = words[random];
+    setSelectedWord(words[random]);
   }
 
+  // useEffect(() => {
+  //   setWords(oldVal => {
+  //     return [...oldVal, 'test'];
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    get(child(dbRef, `couleurs`)).then(snapshot => {
+      if (snapshot.exists()) {
+        setWords(() => [...snapshot.val()]);
+        setSelectedWord(
+          snapshot.val()[Math.floor(Math.random() * snapshot.val().length)].toLowerCase(),
+        );
+      } else {
+        setWords(() => ['helloworld'.toLowerCase()]);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(selectedWord);
+  }, [selectedWord]);
   return (
     <>
-      <Header />
-      <div className="timer">{timer ?? ''}</div>
-      <div className="game-container">
-        <Figure wrongLetters={wrongLetters} />
-        <WrongLetters wrongLetters={wrongLetters} />
-        <Word selectedWord={selectedWord} correctLetters={correctLetters} />
-      </div>
-      <Popup
-        correctLetters={correctLetters}
-        wrongLetters={wrongLetters}
-        selectedWord={selectedWord}
-        setPlayable={setPlayable}
-        playAgain={playAgain}
-      />
+      {words.length ? (
+        <>
+          <Header />
+          <div className="game-container">
+            <Figure wrongLetters={wrongLetters} />
+            <WrongLetters wrongLetters={wrongLetters} />
+            <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+          </div>
+          <Popup
+            correctLetters={correctLetters}
+            wrongLetters={wrongLetters}
+            selectedWord={selectedWord}
+            setPlayable={setPlayable}
+            playAgain={playAgain}
+          />
+        </>
+      ) : (
+        <div className="loader">
+          <Circles
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
+      )}
     </>
   );
 };

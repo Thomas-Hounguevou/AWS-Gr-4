@@ -117,3 +117,10 @@
 .notification-container.show {
   transform: translateY(-50px);
 }
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
