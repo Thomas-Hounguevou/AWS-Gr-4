@@ -28,7 +28,7 @@ La communcation entre les membres était sur Discord.
 
 Abdelhadi a fait la migration de tout le projet vers React avec la librairie Vite Js. Il a aussi régler quelque problème durant le jeu, comme l'affichage du mot quand le temps est écoulé. Il est entrain de travailler aussi sur les salles, tel que un joueur peut joueur en ligne ( on crée une queue ou ils y a les joueurs en attente, donc si un joueur clique sur 'jouer en ligne', on le mets sur la même salle avec un joueur de la queue). <br>
 
-Ronan a travaillé sur le leader board, il a implémenté une fonction pour ajouter dans la BDD les données nécessaires et a écrit un script pour créer le leader board à partir de cette BDD, et de rajouter le score d'un joueur à chaque partie <br>
+Ronan a travaillé sur le leader board, il a implémenté une fonction pour ajouter dans la BDD les données nécessaires et a écrit un script pour créer le leader board à partir de cette BDD, et de rajouter le score d'un joueur à chaque partie. Ce leaderboard affiche que les 10 premiers scores et il faut appuyer sur un bouton pour afficher les suivants.Il a aussi fait le css coresspondant au leaderboard et a améliorer le calcul de score après une partie. Il a aussi fait une base de donnée firestore à partir de la quelle on prends un mots aléatoire correspondant à de la difficulté choisie. <br>
 
 Hassan a fait des recherches sur les pratiques à mettre en oeuvre pour avoir un site sécuriser afin de garantir un minimum de sécurité et éviter des leaks de données personnelles ainsi que de garder le mot à trouver non trouvable et non modifiable dans le code<br>
 

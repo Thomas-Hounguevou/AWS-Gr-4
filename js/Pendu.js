@@ -1,5 +1,20 @@
+import { difficulté } from "./Choixdedifficulte"
+firebase.initializeApp({
+    apiKey: "AIzaSyCw2s6XP0q-Bx1okAH5iqYwyr5V5N95gJ8",
+    authDomain: "aws-gr4.firebaseapp.com",
+    projectId: "aws-gr4"
+  });
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-var mot = "lynx"
+const bdd = firebase.firestore();
+if (difficulté != null){
+    const mots = bdd.collection("MotsADeviner").where("score", "==", difficulté);
+    mots.get();
+    const randomIndex = Math.floor(Math.random() * mots.size);
+    var mot = mots.docs[randomIndex];
+}
+else{
+    var mot = "lynx"
+}
 mot = mot.toUpperCase()
 var secret = []
 var tmp = ""
@@ -239,6 +254,8 @@ function ScoreActuel(secret) {
         score += points[lettre];
       }
     }
+    score = score * difficulté/100;
+    score = score *(10 - nbEssai);
     return score;
 } 
 
