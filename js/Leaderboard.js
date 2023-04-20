@@ -23,7 +23,7 @@ function getScores(limit) {
 //Affiche les donnes en html
 function Afficher(querySnapshot) {
   querySnapshot.forEach(doc => {
-    const donnee = doc.donnee();
+    const donnee = doc.data();
     const Nom = donnee.Nom;
     const Score = donnee.Score;
     const Mot = donnee.Mot;
