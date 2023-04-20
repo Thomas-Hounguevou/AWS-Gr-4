@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-        Leaderboard
-    </title>
-    <h1>
-        Meilleurs joueurs :
-    </h1>
+    <title>Leaderboard</title>
     <link rel="stylesheet" href="../css/Style.css">
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
-    <script src="../js/Leaderboard.js"></script>
   </head>
 
   <body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <head>
-      <h1>Classements</h1>
-      <table id="leaderboard">
+    <h1>Meilleurs joueurs :</h1>
+    <table id="leaderboard">
+      <thead>
         <tr>
+          <th>Place</th>
           <th>Nom</th>
           <th>Score</th>
           <th>Mot</th>
         </tr>
-      </table>
-    </head>
-    <main>
-
-    </body>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+    <div id="montrerplus">
+      <button id="boutonplus">Voir plus</button>
+    </div>
     <a href="Accueil.html">
-        <button>Retour à l'accueil</button>
+      <button>Retour à l'accueil</button>
     </a>
+    <script src="../js/Leaderboard.js"></script>
   </body>
 </html>
