@@ -46,6 +46,8 @@ const Jeu = () => {
       const { key, keyCode } = event;
       if (playable && keyCode >= 65 && keyCode <= 90) {
         const letter = key.toLowerCase();
+        console.log('letter', selectedWord, selectedWord.includes(letter));
+
         if (selectedWord.includes(letter)) {
           if (!correctLetters.includes(letter)) {
             setCorrectLetters(currentLetters => [...currentLetters, letter]);
@@ -74,29 +76,36 @@ const Jeu = () => {
     setWrongLetters([]);
 
     const random = Math.floor(Math.random() * words.length);
-    setSelectedWord(words[random]);
+    let mot = remplacerCaracteresSpeciaux(words[random]);
+    mot = mot.replace(/\s/g, '');
+    mot = mot.replace(/[-_]/g, '');
+    mot = mot.toLowerCase();
+    setSelectedWord(mot);
   }
-
-  // useEffect(() => {
-  //   setWords(oldVal => {
-  //     return [...oldVal, 'test'];
-  //   });
-  // }, []);
 
   useEffect(() => {
     get(child(dbRef, `couleurs`)).then(snapshot => {
       if (snapshot.exists()) {
         setWords(() => [...snapshot.val()]);
-        setSelectedWord(
-          remplacerCaracteresSpeciaux(
-            snapshot.val()[Math.floor(Math.random() * snapshot.val().length)].toLowerCase(),
-          ),
-        );
       } else {
         setWords(() => ['helloworld'.toLowerCase()]);
       }
     });
   }, []);
+
+  useEffect(() => {
+    console.log('selectedWord', selectedWord);
+  }, [selectedWord]);
+
+  useEffect(() => {
+    if (words.length) {
+      let mot = remplacerCaracteresSpeciaux(words[Math.floor(Math.random() * words.length)]);
+      mot = mot.replace(/\s/g, '');
+      mot = mot.replace(/[-_]/g, '');
+      mot = mot.toLowerCase();
+      setSelectedWord(mot);
+    }
+  }, [words]);
 
   return (
     <>

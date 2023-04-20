@@ -109,16 +109,13 @@
   position: absolute;
   left: 40%;
   bottom: -50px;
-  transform: translateXa(-50%);
+  display: none;
   transition: transform 0.3s ease-in-out;
   -webkit-transition: transform 0.3s ease-in-out;
   -moz-transition: transform 0.3s ease-in-out;
   -ms-transition: transform 0.3s ease-in-out;
   -o-transition: transform 0.3s ease-in-out;
-  -webkit-transform: translateXa(-50%);
-  -moz-transform: translateXa(-50%);
-  -ms-transform: translateXa(-50%);
-  -o-transform: translateXa(-50%);
+  transition: display transform 0.3s ease-in-out;
 }
 
 .notification-container p {
@@ -126,6 +123,7 @@
 }
 
 .notification-container.show {
+  display: block;
   transform: translateY(-50px);
 }
 
