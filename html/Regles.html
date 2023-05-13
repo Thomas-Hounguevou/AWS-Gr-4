@@ -3,14 +3,16 @@
     <head>
       <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+      <br><br>
       <title>Règles</title>
-      <h1>Règles du jeu</h1>
-  <link rel="stylesheet" href="../css/Style.css">
+      <h1><center>Règles du jeu</center></h1>
+      <link rel="stylesheet" href="../css/Style.css">
     </head>
 
     <body>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
+      <br><br>
+      <center>
       Le but du jeu est simple: il faut trouver le mot caché en devinant les lettres le composant,
       vous disposez de 10 erreurs possible et de 5 minutes pour gagner la partie, 
       suite à la partie vous obtiendrez un score dépendant de votre nombre d'erreurs, 
@@ -23,14 +25,17 @@
       <a href="Accueil.html">
         <button>Retour à l'accueil</button>
       </a>
-        </body>
+    </center>
+    </body>
 
       <footer>
+        <center>
         <label for="Requete">Entrez le mot que vous souhaiteriez ajouter:</label>
         <input type="text" id="Requete" name="Requete" required
         minlength="2" maxlength="15" size="10">
         <input type="submit" value="Confirmer">
         <p>Après avoir cliqué sur le bouton <strong>Confirmer</strong>, le mot entré dans la boîte nous sera envoyé et nous vérifierons si il est adéquat pour l'ajouter à notre base de données. </p>
         <script src="../js/AjoutMot.js"></script>
+        </center>
       </footer>
   </html>

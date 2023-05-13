@@ -319,14 +319,23 @@ function Jeu(lettre) {
 
 }
 
+// on ajoute au score final 10 fois le nombre d'erreurs possibles
+// si le jeu est gagné
+function pointsBonus (nbEssai) {
+    return 10 * (10 - nbEssai)
+}
+
 //affiche Gagné html
 function Gagner() {
     var div = document.createElement("div");
     div.id = "gagner"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Gagné, vous avez trouvé " + mot
-    + "\n Votre score est de " + score;
+    let scorefinal = calculeScore(secret) + pointsBonus(nbEssai);
+    p.innerHTML = "Gagné, vous avez trouvé le mot " + mot
+    + " !\n Votre score est de " + scorefinal
+    + ",\n dont " + (10 - nbEssai)*10 + " points bonus pour " + (10 - nbEssai) + " essai(s) restant(s) !"
+
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -337,8 +346,9 @@ function Perdu() {
     div.id = "perdu"
     divmain.appendChild(div)
     var p = document.createElement("p");
+    let scorefinal = calculeScore(secret);
     p.innerHTML = "Perdu, vous n'avez pas trouvé le mot " + mot
-    + "\n Votre score est de " + score;
+    + ".\n Votre score est de " + scorefinal + ".";
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
