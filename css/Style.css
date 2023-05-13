@@ -1,113 +1,140 @@
-/* reset default margin and padding for all elements */
-* {
-    margin: 10px;
-    padding: 0;
-  }
-  
-  /* set background color for the body */
-  body {
-    background-color: #f0f0f0;
-    font-family: "Montserrat", sans-serif;
-  }
-  
-  /* center the heading and give it a border */
-  h1 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 3rem;
-    text-align: center;
-    color: #1d3557;
-    text-shadow: 2px 2px #f1faee;
-    margin-bottom: 30px;
-  }
-  
-  /* style the banner section */
-  #banner {
-    background-color: #fff;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* style the button inside the banner section */
-  #banner button {
-    background-color: #0080ff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  /* style the footer section */
-  footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* style the footer section ul */
-  footer ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* style the footer section li */
-  footer li {
-    margin: 0 10px;
-  }
+#Zonejeu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+}
 
-  /* style for all buttons */
-  button {
-    background-color: rgb(108, 211, 160);
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+#Zoneclavier {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
 
-  table {
-    counter-reset: ligne;
-    font-size: 14px;
-    border-collapse: collapse;
-    margin: 0 auto;
-  }
+#main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+
+}
+
+#btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+
+#Retour{
+  background-color: rgb(108, 211, 160);
+  border: none;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+}
+
+#Retour:hover,#Retour:focus{
+  outline-offset: 3px;
+  outline: 2px solid rgb(108, 211, 160);
+  border: none;
+  transition: 150ms;
+}
+
+
+#ChangeMot{
+  background-color: rgb(108, 211, 160);
+  border: none;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+
+}
+
+#ChangeMot:hover,#ChangeMot:focus{
+  outline-offset: 3px;
+  outline: 2px solid rgb(108, 211, 160);
+  border: none;
+  transition: 150ms;
+}
+
+#motCache > td {
+
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: bold;
+  color: black;
+  border-color: 1px black;
+  text-align: center;
+
+}
+
+
+
+#nberreur{
+  font-size: large;
+  font-weight: bold;
+  color: red;
+}
+
+#lettreutilise{
+  font-size: large;
+  font-weight: bold;
+
+}
+
+
+#clavier {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgb(108, 211, 160);
+
+
+}
+
+#A,#B,#C,#D,#E,#F,#G,#H,#I,#J,#K,#L,#M,#N,#O,#P,#Q,#R,#S,#T,#U,#V,#W,#X,#Y,#Z {
+
+  padding: 15px;
+  background-color: rgb(89, 252, 197);
+  border-radius: 5px;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  height: 100%;
+  width: 100%;
+  border-color: 1px black;
   
-  table td:first-child:before {
-    content: counter(ligne);
-    counter-increment: ligne;
-    min-width: 25px;
-    text-align: center;
-    margin-right: 10px;
-  }
-  
-  th,
-  td {
-    padding: 10px;
-    border: 1px solid black;
-  }
-  
-  th {
-    background-color: #ccc;
-  }
-  
-  #montrerplus {
-    width: 100px;
-    height: 50px;
-    background-color: #ddd;
-    text-align: center;
-    line-height: 50px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-left: auto; 
-    margin-right: auto;
-  }
-  
-  #montrerplus:hover {
-    background-color: #bbb;
-  }
+}
+
+#A:hover,#B:hover,#C:hover,#D:hover,#E:hover,#F:hover,#G:hover,#H:hover,#I:hover,#J:hover,#K:hover,#L:hover,#M:hover,#N:hover,#O:hover,#P:hover,#Q:hover,#R:hover,#S:hover,#T:hover,#U:hover,#V:hover,#W:hover,#X:hover,#Y:hover,#Z:hover {
+
+  background-color: #7ff789;
+  color: white;
+  transform: translate(0px, -5px);
+  translate: 250ms;
+  transition: 250ms;
+  font: bold;
+
+}

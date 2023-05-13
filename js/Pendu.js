@@ -1,20 +1,5 @@
-import { difficulté } from "./Choixdedifficulte"
-firebase.initializeApp({
-    apiKey: "AIzaSyCw2s6XP0q-Bx1okAH5iqYwyr5V5N95gJ8",
-    authDomain: "aws-gr4.firebaseapp.com",
-    projectId: "aws-gr4"
-  });
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables Globales ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const bdd = firebase.firestore();
-if (difficulté != null){
-    const mots = bdd.collection("MotsADeviner").where("score", "==", difficulté);
-    mots.get();
-    const randomIndex = Math.floor(Math.random() * mots.size);
-    var mot = mots.docs[randomIndex];
-}
-else{
-    var mot = "lynx"
-}
+var mot = ""
 mot = mot.toUpperCase()
 var secret = []
 var tmp = ""
@@ -28,10 +13,9 @@ var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
 var alph = 0
 const score = calculeScore(mot);
 console.log(`Le mot "${mot}" vaut ${score} points`);
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-/*
+
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getDatabase, ref, onValue,get,child } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
@@ -72,7 +56,7 @@ get(child(dbRef, `couleurs`)).then((snapshot) => {
   console.error(error);
 });
 
-*/
+
 function remplacerCaracteresSpeciaux(chaine) {
     let nouvelleChaine = chaine;
     nouvelleChaine = nouvelleChaine.replace(/[éèêë]/g, 'e');
@@ -89,7 +73,6 @@ function remplacerCaracteresSpeciaux(chaine) {
     return nouvelleChaine;
   }
 
-// Fonction qui calcule le score du mot à deviner
 function calculeScore(mot) {
     let score = 0;
     const points = {
@@ -108,17 +91,6 @@ function calculeScore(mot) {
     }
     return score;
   }
-
-// Fonction qui renvoie la difficulté du mot en fonction de son score:
-// 100: Facile
-// 200: Normal
-// 300: Difficile
-function calculDifficulté(mot) {
-    let score = calculeScore(mot);
-    if (score < 10) return 100;
-    else if (score < 20) return 200;
-    else return 300;
-}
 
 // Fonction qui renvoie la lettre entrée au clavier
 function KeyPressed(event) {
@@ -143,12 +115,12 @@ function KeyPressed(event) {
   
         // Vérifie si le joueur a gagné ou perdu
         if (VerifGagne(secret)) {
-          alert("Vous avez gagné !");
+          alert("Vous avez gagné ! Le mot était bien " + mot);
 		  document.removeEventListener("keydown", KeyPressed);
 		  ClearPage() 
 		  Gagner()
         } else if (VerifPerdu(nbEssai)) {
-          alert("Vous avez perdu !");
+          alert("Vous avez perdu ! Le mot était " + mot);
 		  document.removeEventListener("keydown", KeyPressed);
 		  ClearPage() 
 		  Perdu()
@@ -197,7 +169,6 @@ function Init(mot) {
     document.body.appendChild(divmain);
     AfficheEssai(nbEssai)
     AfficheLettreUtilise(lettreUtilise)
-    AfficheScore(secret)
 }
 
 
@@ -209,7 +180,8 @@ function afficherImage(nbEssai) {
     }
   
     let image = document.getElementById("image");
-    image.src = "../images/" + nbEssai + ".jpg";
+    image.src = "../images/" + nbEssai + ".png";
+    console.log("L'image {image.src} doit être affichée")
   }
   
   
@@ -237,27 +209,6 @@ function check(mot, lettre) {
     }
 
 }
-
-function ScoreActuel(secret) {
-    let score = 0;
-    const points = {
-      'A': 1, 'E': 1, 'I': 1, 'L': 1, 'N': 1, 'O': 1, 'R': 1, 'S': 1, 'T': 1, 'U': 1,
-      'D': 2, 'G': 2, 'M': 2,
-      'B': 3, 'C': 3, 'P': 3,
-      'F': 4, 'H': 4, 'V': 4,
-      'J': 8, 'Q': 8,
-      'K': 10, 'W': 10, 'X': 10, 'Y': 10, 'Z': 10
-    };
-    for (let i = 0; i < secret.length; i++) {
-      const lettre = secret[i].toUpperCase();
-      if (points[lettre]) {
-        score += points[lettre];
-      }
-    }
-    score = score * difficulté/100;
-    score = score *(10 - nbEssai);
-    return score;
-} 
 
 /*function Affiche(secret) {
     tmp = ""
@@ -328,16 +279,6 @@ function AfficheEssai(nbEssai) {
     document.body.appendChild(divmain);
 }
 
-// affiche le score actuel du jeu
-function AfficheScore() {
-    var score = ScoreActuel(secret);
-    var div = document.getElementById("Zonescore")
-    var p = document.createElement("p");
-    p.id = "scoreactuel"
-    p.innerHTML = "Score actuel : " + score
-    div.append.body.appendChild(divmain);
-}
-
 
 //jeu du pendu html
 function Jeu(lettre) {
@@ -370,8 +311,7 @@ function Gagner() {
     div.id = "gagner"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Gagné, le mot était bien " + mot
-    + "<br> Votre score est de " + ScoreActuel(secret);
+    p.innerHTML = "Gagné, vous avez trouvé " + mot;
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -382,8 +322,7 @@ function Perdu() {
     div.id = "perdu"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Perdu, il fallait trouver " + mot + "..."
-    + "<br> Votre score est de " + ScoreActuel(secret);
+    p.innerHTML = "Perdu, vous n'avez pas trouvé le mot " + mot;
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -465,18 +404,5 @@ function main() {
         console.log("Lettre utilisé : " + tmp)
         AfficheEssai(nbEssai)
         console.log("nombre d'essai : " + tmp)
-        AfficheScore(secret)
-        score = ScoreActuel(secret)
-        console.log("score actuel : " + score)
     }
 }
-
-
-Init(mot)
-Clavier()
-SelectClavierWord()
-afficherImage(nbEssai);
-
-
-
-
