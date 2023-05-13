@@ -3,33 +3,46 @@
     <head>  
         <meta charset="utf-8" />
         <title>Jeu du pendu</title>
-        <h1>A vous de jouer !</h1>
+        
 
           <link rel="stylesheet" href="../css/Style.css">
           <link rel="stylesheet" href="../css/Pendu.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-        <script src="../js/Pendu.js" type="module" defer></script>
+          <script src="../js/Pendu.js" type="module" defer></script>
         <script src="../js/Timer.js" defer></script>
+        <script type="text/javascript" src="../js/Mobile.js" defer></script>
     </head>
 
     <body>
-
-        <div>
+        <header>
+            <Link to="/" class='navbar-logo'>
+                JEU DU PENDU <i class="fas fa-gamepad"></i>
+            </Link>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="../html/Jeu.html">Jouer</a></li>
+                    <li><a href="#">Règles</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="#">Contact</a>
+            <p class="menu cta">Menu</p>
+        </header>
+        
+        <div class ="main">
+            <div id="mobile__menu" class="overlay">
+                <a class="close">&times;</a>
+                <div class="overlay__content">
+                    <a href="#">Acceuil</a>
+                    <a href="../html/Jeu.html">Jouer</a>
+                    <a href="#">Règles</a>
+                </div>
+            </div>
             <div id="timer">
                 <h1 id="countdown"></h1>
             </div>
-        </div>
-        <div id ="btn">
-            <a href="Accueil.html">
-                <button id="Retour">Retour</button>
-           </a>
-           <a href="Jeu.html">
-            <button id="ChangeMot">Changer de Mot</button>
-            </a>
-        </div>
-        <div id="image-container">
-            <img id="image" src="" alt="image">
-        </div>
-          
+            <h1 class = "titre">A vous de jouer !</h1>
+
+        </div>      
     </body>
 </html>

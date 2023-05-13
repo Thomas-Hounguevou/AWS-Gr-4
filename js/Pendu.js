@@ -11,8 +11,10 @@ var divmain = document.querySelector("div")
 divmain.id = "main"
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var alph = 0
-const score = calculeScore(mot);
-console.log(`Le mot "${mot}" vaut ${score} points`);
+let score
+let pseudo = getPseudo();
+alert("Bienvenue " + pseudo + " !\nAppuyez sur enter pour commencer à jouer."); 
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -92,6 +94,16 @@ function calculeScore(mot) {
     return score;
   }
 
+// Fonction qui demande un pseudo au joueur
+function getPseudo() {
+    let pseudo = prompt("Entrez votre pseudo:");
+    while (pseudo == null || pseudo == "") {
+      pseudo = prompt("Entrez un pseudo valide:");
+    }
+    return pseudo;
+  }
+  
+
 // Fonction qui renvoie la lettre entrée au clavier
 function KeyPressed(event) {
     let lettre = event.key.toUpperCase();
@@ -132,6 +144,8 @@ function KeyPressed(event) {
 
 // Fonction qui initie le jeu avec un mot choisis (Hello World)
 function Init(mot) {
+    score = calculeScore(mot);
+    console.log(`Le mot "${mot}" vaut ${score} points`);
     var div = document.createElement("div");
     div.id = "Zonejeu"
     divmain.appendChild(div)
@@ -311,7 +325,8 @@ function Gagner() {
     div.id = "gagner"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Gagné, vous avez trouvé " + mot;
+    p.innerHTML = "Gagné, vous avez trouvé " + mot
+    + "\n Votre score est de " + score;
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -322,7 +337,8 @@ function Perdu() {
     div.id = "perdu"
     divmain.appendChild(div)
     var p = document.createElement("p");
-    p.innerHTML = "Perdu, vous n'avez pas trouvé le mot " + mot;
+    p.innerHTML = "Perdu, vous n'avez pas trouvé le mot " + mot
+    + "\n Votre score est de " + score;
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -382,7 +398,7 @@ function main() {
     Init(mot)
     while (true) {
         Affiche(secret)
-        console.log("mots a trouver : " + mot)
+        console.log("mot a trouver : " + mot)
         console.log(tmp)
         lettre = prompt("Entrez une lettre :")
         check(mot, lettre)

@@ -1,90 +1,51 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <title>
-        Acceuil
-    </title>
-    <h1>
-        Jeu du Pendu
-    </h1>
-    <link rel="stylesheet" href="../css/Style.css">
-</head>
-
-<body>
-    <header>
-        <h1>
-            <img src="../assets/pendu.gif" alt="GIF"> 
-        </h1>
-    </header>
     <head>
-        <section id="banner">
-            <h1>
-                Nouvelle Partie
-            </h1>
-            <p>
-                Lance une nouvelle partie du Jeu du Pendu
-            </p>
-            <a href="Jeu.html">
-                <button>Jouer</button>
-            </a>
-        </section>
+        <meta charset="utf-8">
+        <title>Jeux du Pendu</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/Style.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
     </head>
-    <main>
-        <section id="banner">
-            <h1>
-                Leaderboard
-            </h1>
-            <p>
-                Accède aux classements/records des joueurs
-            </p>
-            <a href="Leaderboard.html">
-                <button>Leaderboard</button>
-            </a>
-    </main>
-    <section id="banner">
-        <h1>
-            Règles et ajout de mots
-        </h1>
-        <p>
-            Mène à la page des règles du jeu et permet de faire une demande d'ajout de mot
-        </p>
-        <a href="Regles.html">
-            <button>Règles</button>
-        </a>
-    </section>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
-    <script>
-        const firebaseConfig = {
-            // votre configuration Firebase ici
-        };
+    <body>
+        <header>
+            <Link to="/" class='navbar-logo'>
+                JEU DU PENDU <i class="fas fa-gamepad"></i>
+            </Link>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="../html/Jeu.html">Jouer</a></li>
+                    <li><a href="#">Règles</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="#">Contact</a>
+            <p class="menu cta">Menu</p>
+        </header>
+        <div id="mobile__menu" class="overlay">
+            <a class="close">&times;</a>
+            <div class="overlay__content">
+                <a href="#">Acceuil</a>
+                <a href="../html/Jeu.html">Jouer</a>
+                <a href="#">Règles</a>
+            </div>
+        </div>
 
-        firebase.initializeApp(firebaseConfig);
+        <div class="main-container">
+            
+                <h1>BIENVENUE SUR LE JEU DU PENDU</h1>
+                <p>Que voulez-vous faire ?</p>
+                <div class="main-btns">
+                    
+                    <button class="btn btn--outline btn--large" href="../html/Jeu.html">JOUER <i class="fas fa-play fa-beat"/> </button>
+                   
+                    <Link to="/Regles" class="btn-mobile">
+                    <button class="btn btn--outline btn--large">Règles du jeux <i class="fas fa-solid fa-bars"/></button>
+                    </Link>
+                </div>
+        </div>
 
-        const authButton = document.getElementById('authButton');
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                // utilisateur connecté
-                authButton.textContent = 'Se déconnecter';
-            } else {
-                // utilisateur déconnecté
-                authButton.textContent = 'Se connecter';
-            }
-        });
-    </script>
-
-    <footer>
-        <p>
-            Créé par
-        </p>
-        <ul>
-            <li>BOUALI ABDELHADI</li>
-            <li>DOCHERTY RONAN</li>
-            <li>HOUNGUEVOU THOMAS</li>
-            <li>JERRAR HASSAN</li>
-        </ul>
-    </footer>
-
-</body>
+        </div>
+        <script type="text/javascript" src="../js/Mobile.js"></script>
+    </body>
 </html>

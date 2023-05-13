@@ -1,140 +1,187 @@
-#Zonejeu {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  background: url("../assets/fond.jpg") center center/cover no-repeat;
+  height: 100vh;
+  width: 100vw;
+}
+
+header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  font-size: large;
-  font-weight: bold;
+  padding: 30px 10%;
+  background-color: transparent;
 }
 
-#Zoneclavier {
+
+
+.fa-gamepad {
+  margin-left: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.navbar-logo {
+  margin-right: auto;
+  size: 10px;
+}
+
+.nav__links {
+  list-style: none;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
 }
 
-#main{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-
-
-}
-
-#btn{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  height: 100%;
-  width: 100%;
-}
-
-#Retour{
-  background-color: rgb(108, 211, 160);
-  border: none;
-  font-size: large;
-  font-weight: bold;
-  color: white;
-}
-
-#Retour:hover,#Retour:focus{
-  outline-offset: 3px;
-  outline: 2px solid rgb(108, 211, 160);
-  border: none;
-  transition: 150ms;
-}
-
-
-#ChangeMot{
-  background-color: rgb(108, 211, 160);
-  border: none;
-  font-size: large;
-  font-weight: bold;
-  color: white;
-
-}
-
-#ChangeMot:hover,#ChangeMot:focus{
-  outline-offset: 3px;
-  outline: 2px solid rgb(108, 211, 160);
-  border: none;
-  transition: 150ms;
-}
-
-#motCache > td {
-
-  padding: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  font-size: large;
-  font-weight: bold;
+.nav__links a,
+.cta,
+.overlay__content a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
   color: black;
-  border-color: 1px black;
-  text-align: center;
-
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
 }
 
-
-
-#nberreur{
-  font-size: large;
-  font-weight: bold;
-  color: red;
+.nav__links li {
+  padding: 0px 20px;
 }
 
-#lettreutilise{
-  font-size: large;
-  font-weight: bold;
-
+.nav__links li a {
+  transition: all 0.3s ease 0s;
 }
 
+.nav__links li a:hover {
+  color: black;
+  border-bottom: 2px solid black;
+  padding-bottom: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
 
-#clavier {
+.cta {
+  margin-left: 20px;
+  padding: 9px 25px;
+  background-color: black;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  color: white;
+}
 
+.cta:hover {
+  background-color: transparent;
+  color: black;
+  border-color: black;
+  border: 1px solid black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+/* Mobile Nav */
+
+.menu {
+  display: none;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: all 0.5s ease 0s;
+}
+
+.overlay--active {
+  width: 100%;
+}
+
+.overlay__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay a {
+  padding: 15px;
+  font-size: 36px;
+  display: block;
+  transition: all 0.3s ease 0s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #0088a9;
+}
+.overlay .close {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  color: #edf0f1;
+  cursor: pointer;
+}
+
+.main-container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: rgb(108, 211, 160);
-
-
+  justify-content: center;
+  height: 80vh;
 }
 
-#A,#B,#C,#D,#E,#F,#G,#H,#I,#J,#K,#L,#M,#N,#O,#P,#Q,#R,#S,#T,#U,#V,#W,#X,#Y,#Z {
+.main-container h1{
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
 
-  padding: 15px;
-  background-color: rgb(89, 252, 197);
-  border-radius: 5px;
-  font-size: large;
-  font-weight: bold;
-  color: white;
-  height: 100%;
-  width: 100%;
-  border-color: 1px black;
+.main-container p{
+  font-size: 1.5rem;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.main-container button{
+  padding: 8px 20px;
+  border-radius: 10px;
+  margin-right: 40px;
+  background-color: transparent;
   
 }
 
-#A:hover,#B:hover,#C:hover,#D:hover,#E:hover,#F:hover,#G:hover,#H:hover,#I:hover,#J:hover,#K:hover,#L:hover,#M:hover,#N:hover,#O:hover,#P:hover,#Q:hover,#R:hover,#S:hover,#T:hover,#U:hover,#V:hover,#W:hover,#X:hover,#Y:hover,#Z:hover {
-
-  background-color: #7ff789;
+.main-container button:hover{
+  background: black;
   color: white;
-  transform: translate(0px, -5px);
-  translate: 250ms;
+  border-radius: 50px;
+  padding: 15px;
   transition: 250ms;
-  font: bold;
+}
 
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .close {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .nav__links,
+  .cta {
+    display: none;
+  }
+  .menu {
+    display: initial;
+  }
 }
