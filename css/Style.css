@@ -7,8 +7,28 @@
 
 body {
   background: url("../assets/fond.jpg") center center/cover no-repeat;
-  height: 100vh;
-  width: 100vw;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 2px solid black;
+  border-radius: 50px;
+  transition: all 0.3s ease-out;
+}
+
+
+.main-btns {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 header {
@@ -24,17 +44,56 @@ h1 {
   font-weight: 500;
   color: black;
   text-decoration: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  font-family: cursive ;
 }
+
+p {
+  font-family: cursive;
+}
+
+#regle{
+  font-family: cursive;
+  font-size: 1.5rem;
+
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  top: 200px;
+}
+
+#gagner , #perdu{
+  font-family: cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  top: 200px;
+}
+#txt  {
+  font-family: cursive;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  margin-top: 20px;
+  position: relative;
+  top: 360px;
+}
+
 
 .fa-gamepad {
-  margin-left: 0.5rem;
-  font-size: 1.8rem;
+  position: center;
+  
 }
 
-.navbar-logo {
-  margin-right: auto;
-  size: 10px;
+.titre {
+  position: absolute;
+  left: 5%;
+  font-family: cursive;
+  font-size: 2rem;
 }
 
 .nav__links {
@@ -45,11 +104,10 @@ h1 {
 .nav__links a,
 .cta,
 .overlay__content a {
-  font-family: "Montserrat", sans-serif;
   font-weight: 500;
   color: black;
   text-decoration: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  font-family: cursive ;
 }
 
 .nav__links li {
@@ -57,33 +115,34 @@ h1 {
 }
 
 .nav__links li a {
-  transition: all 0.3s ease 0s;
+  transition: 250ms;
 }
 
 .nav__links li a:hover {
   color: black;
   border-bottom: 2px solid black;
   padding-bottom: 5px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  font-family: cursive ;
 }
 
 .cta {
-  margin-left: 20px;
-  padding: 9px 25px;
+  padding: 5px 25px;
+  text-align: center;
   background-color: black;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
   color: white;
 }
+
+
 
 .cta:hover {
   background-color: transparent;
   color: black;
   border-color: black;
   border: 1px solid black;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  transition: 250ms;
 }
 
 /* Mobile Nav */
@@ -156,8 +215,8 @@ h1 {
 }
 
 .main-container button{
-  padding: 8px 20px;
-  border-radius: 10px;
+  padding: 10px 11px;
+
   margin-right: 40px;
   background-color: transparent;
   
@@ -167,9 +226,91 @@ h1 {
   background: black;
   color: white;
   border-radius: 50px;
-  padding: 15px;
+  padding: 8px 15px;
   transition: 250ms;
 }
+
+.footer-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: grey;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+.left-col{
+  flex: 1;
+  display: flex;
+  justify-content: column;
+  align-items: center;
+
+}
+
+.logo{
+
+  margin-right: 10px;
+}
+
+.rights-text{
+  padding-left: 30px;
+}
+
+.right-col{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+.social-media{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-media i{
+  font-size: 1.5rem;
+  margin: 0 15px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.fa-youtube:hover{
+  color: red;
+}
+
+.fa-facebook-f:hover{
+  color: rgb(51, 51, 253);
+}
+
+.fa-instagram:hover{
+  color: rgb(202, 54, 182);
+}
+
+.fa-twitter:hover{
+  color: rgb(18, 166, 224);
+}
+
+.fa-linkedin-in:hover{
+  color: rgb(0, 119, 181);
+}
+
+
+.news{
+  padding-right: 40px;
+  font-size: 1.5rem;
+}
+
+
+
 
 @media screen and (max-height: 450px) {
   .overlay a {

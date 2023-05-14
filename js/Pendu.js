@@ -12,8 +12,7 @@ divmain.id = "main"
 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var alph = 0
 let score
-let pseudo = getPseudo();
-alert("Bienvenue " + pseudo + " !\nAppuyez sur enter pour commencer à jouer."); 
+let pseudo = ""
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonctions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -41,16 +40,18 @@ const app = initializeApp(firebaseConfig);
 const dbRef = ref(getDatabase(app));
 get(child(dbRef, `couleurs`)).then((snapshot) => {
   if (snapshot.exists()) {
-    console.log(snapshot.val());
+    //console.log(snapshot.val());
     const data = snapshot.val();
     mot = data[Math.floor(Math.random() * data.length)];
     mot = remplacerCaracteresSpeciaux(mot);
     mot = mot.toUpperCase();
-    console.log(mot);
-    Init(mot);
-    Clavier()
-    SelectClavierWord()
-    afficherImage(nbEssai); 
+    //console.log(mot);
+    ClearPage();
+    getPseudo();
+     
+    
+
+
   } else {
     console.log("No data available");
   }
@@ -72,6 +73,7 @@ function remplacerCaracteresSpeciaux(chaine) {
     nouvelleChaine = nouvelleChaine.replace(/[í]/g, 'i');
     nouvelleChaine = nouvelleChaine.replace(/[ó]/g, 'o');
     nouvelleChaine = nouvelleChaine.replace(/[úü]/g, 'u');
+    nouvelleChaine = nouvelleChaine.replace(/[']/g, ' ');
     return nouvelleChaine;
   }
 
@@ -95,14 +97,84 @@ function calculeScore(mot) {
   }
 
 // Fonction qui demande un pseudo au joueur
-function getPseudo() {
-    let pseudo = prompt("Entrez votre pseudo:");
-    while (pseudo == null || pseudo == "") {
-      pseudo = prompt("Entrez un pseudo valide:");
-    }
-    return pseudo;
-  }
+function getPseudo(_pseudo) {
+    var a = document.createElement("a");
+    a.id = "txt";
+    a.style = "font-family: 'Press Start 2P', cursive; font-size: 30px; color: black;"
+    a.innerHTML = "Entrez votre pseudo : " ;
+    divmain.appendChild(a);
+    var input = document.createElement("input");
+    input.type = "text";
+    input.id = "pseudo";
+    input.placeholder = "Pseudo..";
+    divmain.appendChild(input);
+    var button = document.createElement("button");
+    button.id = "button";
+    button.innerHTML = "Commencer";
+    
+    divmain.appendChild(button);
+    button.addEventListener("click", function () {
+        pseudo = document.getElementById("pseudo").value;
+        if (pseudo == null || pseudo == "") {
+            alert("Entrez un pseudo valide");
+        } else {
+            ClearPage();
+            pseudo = pseudo.toUpperCase();
+            console.log(pseudo);
+            afficherImage(nbEssai);
+            affichageTimer();
+            
+            Init(mot);
+            Clavier()
+            SelectClavierWord()
+            
+        }
+    });
+}
   
+var distance;
+var minutes;
+var seconds;
+function affichageTimer() {
+    var timer = document.createElement("div");
+    timer.id = "timer";
+    var countdown = document.createElement("h1");
+    countdown.id = "countdown";
+    countdown.innerText = "00:02:00";
+    countdown.style = "font-family: 'Orbitron', sans-serif;";
+    timer.appendChild(countdown);
+    divmain.appendChild(timer);
+
+    var countDownDate = new Date().getTime() + (2 * 60 * 1000);
+
+    // Mettre à jour le compte à rebours toutes les secondes
+    var x = setInterval(function() {
+
+    // Récupérer la date et l'heure actuelles
+    var now = new Date().getTime();
+
+    // Calculer la distance entre maintenant et la date limite
+    distance = countDownDate - now;
+
+    // Calculer les minutes et secondes restantes
+    minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Afficher le compte à rebours dans l'élément avec l'id "countdown"
+    document.getElementById("countdown").innerText ="00:"+ "0" +minutes + ":" + seconds + " ";
+
+
+    // Si la date limite est dépassée, afficher "EXPIRÉ"
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerText = "Temps écoulé !";
+        document.getElementById("countdown").style.color = "red";
+        retirerClaviers();
+        Perdu();  
+
+    }
+    }, 1000);
+}
 
 // Fonction qui renvoie la lettre entrée au clavier
 function KeyPressed(event) {
@@ -131,7 +203,7 @@ function KeyPressed(event) {
 		  document.removeEventListener("keydown", KeyPressed);
 		  ClearPage() 
 		  Gagner()
-        } else if (VerifPerdu(nbEssai)) {
+        } else if (VerifPerdu(nbEssai) || distance < 0) {
           alert("Vous avez perdu ! Le mot était " + mot);
 		  document.removeEventListener("keydown", KeyPressed);
 		  ClearPage() 
@@ -142,10 +214,10 @@ function KeyPressed(event) {
   }
   
 
-// Fonction qui initie le jeu avec un mot choisis (Hello World)
+// Fonction qui initie le jeu avec un mot choisi
 function Init(mot) {
     score = calculeScore(mot);
-    console.log(`Le mot "${mot}" vaut ${score} points`);
+    //console.log(`Le mot "${mot}" vaut ${score} points`);
     var div = document.createElement("div");
     div.id = "Zonejeu"
     divmain.appendChild(div)
@@ -195,7 +267,6 @@ function afficherImage(nbEssai) {
   
     let image = document.getElementById("image");
     image.src = "../images/" + nbEssai + ".png";
-    console.log("L'image {image.src} doit être affichée")
   }
   
   
@@ -267,7 +338,7 @@ function VerifPerdu(nbEssai) {
 function UpdateLettreUtilise(lettreUtilise) {
     var div = document.getElementById("Zonejeu")
     var p = document.getElementById("lettreutilise");
-    p.innerHTML = "Lettre utilisé : " + lettreUtilise
+    p.innerHTML = "Lettres utilisées : " + lettreUtilise
     
     div.appendChild(p)
     document.body.appendChild(divmain);
@@ -278,7 +349,7 @@ function AfficheLettreUtilise(lettreUtilise) {
     var div = document.getElementById("Zonejeu")
     var p = document.createElement("p");
     p.id = "lettreutilise"
-    p.innerHTML = "Lettre utilisé : " + lettreUtilise
+    p.innerHTML = "Lettres utilisées : " + lettreUtilise
     div.appendChild(p)
     document.body.appendChild(divmain);
 }
@@ -314,13 +385,13 @@ function Jeu(lettre) {
     }
     UpdateEssai()
     UpdateLettreUtilise(lettreUtilise)
-    console.log("Lettre utilisé : " + lettreUtilise)
-    console.log("nombre d'essai : " + nbEssai)
+    //console.log("Lettre utilisé : " + lettreUtilise)
+    //console.log("nombre d'essai : " + nbEssai)
 
 }
 
 // on ajoute au score final 10 fois le nombre d'erreurs possibles
-// si le jeu est gagné
+// (si le jeu est gagné)
 function pointsBonus (nbEssai) {
     return 10 * (10 - nbEssai)
 }
@@ -392,24 +463,44 @@ function Clavier() {
 function SelectClavierWord() {
     var table = document.getElementById("clavier")
     var onclick = function (event) {
-        var target = event.target;
+      var target = event.target;
+      // vérifie si on clique bien sur une lettre
+      if (/^[A-Za-z]$/.test(target.id)) { 
         var lettre = target.id
         Jeu(lettre)
+      }
     };
-	table.addEventListener("click", onclick);
-	if (VerifGagne(secret) || nbEssai >= 10) {
-		table.removeEventListener("click", this.onclick);
-	}
+    table.addEventListener("click", onclick);
+    if (VerifGagne(secret) || nbEssai >= 10) {
+        table.removeEventListener("click", this.onclick);
+    }
+  }
+  
+
+// retire le clavier et le listener si le temps est écoulé
+function retirerClaviers() {
+var clavier = document.getElementById("Zoneclavier");
+if (clavier) {
+    clavier.parentNode.removeChild(clavier);
+}
+var zone = document.getElementById("Zonejeu");
+if (zone) {
+    zone.parentNode.removeChild(zone);
 }
 
+
+var keydownEvent = KeyPressed;
+document.removeEventListener("keydown", keydownEvent);
+
+}
 // Fonction principale
 
 function main() {
     Init(mot)
     while (true) {
         Affiche(secret)
-        console.log("mot a trouver : " + mot)
-        console.log(tmp)
+        //console.log("mot a trouver : " + mot)
+        //console.log(tmp)
         lettre = prompt("Entrez une lettre :")
         check(mot, lettre)
         VerifLettre(lettre)

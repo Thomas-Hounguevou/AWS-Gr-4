@@ -6,17 +6,21 @@
         <link rel="stylesheet" href="../css/Style.css">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/6d3b596002.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../js/Mobile.js" defer></script>
     </head>
     <body>
         <header>
-            <Link to="/" class='navbar-logo'>
-                JEU DU PENDU <i class="fas fa-gamepad"></i>
-            </Link>
+            <a class="titre">
+                JEU DU PENDU  <i class="fas fa-gamepad"></i>
+            </a>
             <nav>
                 <ul class="nav__links">
                     <li><a href="#">Accueil</a></li>
                     <li><a href="../html/Jeu.html">Jouer</a></li>
+                    <li><a href="../html/Leaderboard.html">Leaderboard</a></li>
                     <li><a href="../html/Regles.html">Règles</a></li>
+                    
                 </ul>
             </nav>
             <a class="cta" href="#">Contact</a>
@@ -25,28 +29,59 @@
         <div id="mobile__menu" class="overlay">
             <a class="close">&times;</a>
             <div class="overlay__content">
-                <a href="#">Acceuil</a>
+                <a href="../html/Accueil.html">Acceuil</a>
                 <a href="../html/Jeu.html">Jouer</a>
-                <a href="#">Règles</a>
+                <a href="../html/Leaderboard.html">Leaderboard</a>
+                <a href="../html/Regles.html">Règles</a>
             </div>
         </div>
 
         <div class="main-container">
             
-            <h1>BIENVENUE SUR LE JEU DU PENDU</h1>
+            <h1><strong>BIENVENUE SUR LE JEU DU PENDU</strong></h1>
             <p>Que voulez-vous faire ?</p>
             <div class="main-btns">
               <a href="../html/Jeu.html">
-                <button class="btn btn--outline btn--large">JOUER <i class="fas fa-play fa-beat"/></button>
+                <button class="btn">JOUER <i class="fas fa-gamepad"></i></button>
               </a>
               <a href="../html/Regles.html">
-                <button class="btn btn--outline btn--large">Règles du jeu<i class="fas fa-solid fa-bars"/></button>
+                <button class="btn">Règles du jeu <i class="fas fa-book"></i></button>
               </a>
             </div>
             
         </div>
 
         </div>
-        <script type="text/javascript" src="../js/Mobile.js"></script>
+        
     </body>
+
+    <footer>
+        <div class="footer-container">
+            <div class="left-col">   
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a> 
+                    <a href="#"><i class="fab fa-twitter"></i></a> 
+                    <a href="#"><i class="fab fa-youtube"></i></a> 
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+                </div>
+                <p class="rights-text">© 2023 Created By Group 4 All Rights Reserved.</p>
+            </div>
+  
+            <div class="right-col">
+                <form action="" class="newsletter-form">
+                  <center>
+                  <label for="Requete" style="font-family: cursive;">Entrez le mot que vous souhaiteriez ajouter:</label>
+                  <input type="text" id="Requete" name="Requete" required
+                  minlength="2" maxlength="15" size="10">
+                  <input type="submit" value="Confirmer">
+                  
+                    
+                    <p>Après avoir cliqué sur le bouton <strong>Confirmer</strong>, le mot entré dans la boîte nous sera envoyé et nous vérifierons si il est adéquat pour l'ajouter à notre base de données. </p>
+                    <script src="../js/AjoutMot.js"></script>
+                  </center>
+                </form>
+            </div>
+        </div>
+    </footer>
 </html>

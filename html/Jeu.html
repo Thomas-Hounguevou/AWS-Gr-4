@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html>
-    <head>  
-        <meta charset="utf-8" />
-        <title>Jeu du pendu</title>
-        
 
-          <link rel="stylesheet" href="../css/Style.css">
-          <link rel="stylesheet" href="../css/Pendu.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-          <script src="../js/Pendu.js" type="module" defer></script>
-        <script src="../js/Timer.js" defer></script>
-        <script type="text/javascript" src="../js/Mobile.js" defer></script>
-    </head>
+        
+        <head>
+            <meta charset="utf-8">
+            <title>Jeux du Pendu</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="../css/Style.css">
+            <link rel="stylesheet" href="../css/Timer.css">
+            <link rel="stylesheet" href="../css/Pendu.css">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+            <script src="https://kit.fontawesome.com/6d3b596002.js" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="../js/Mobile.js" defer></script>
+            <script src="../js/Pendu.js" type="module" ></script>
+        </head>
+
 
     <body>
         <header>
-            <Link to="/" class='navbar-logo'>
-                JEU DU PENDU <i class="fas fa-gamepad"></i>
-            </Link>
+            <a class="titre">
+                JEU DU PENDU  <i class="fas fa-gamepad"></i>
+            </a>
             <nav>
                 <ul class="nav__links">
                     <li><a href="../html/Accueil.html">Accueil</a></li>
                     <li><a href="../html/Jeu.html">Jouer</a></li>
+                    <li><a href="../html/Leaderboard.html">Leaderboard</a></li>
                     <li><a href="../html/Regles.html">Règles</a></li>
                 </ul>
             </nav>
             <a class="cta" href="#">Contact</a>
             <p class="menu cta">Menu</p>
+            
         </header>
         
-        <div class ="main">
+        <div id ="main">
             <div id="mobile__menu" class="overlay">
                 <a class="close">&times;</a>
                 <div class="overlay__content">
@@ -38,15 +45,45 @@
                     <a href="#">Règles</a>
                 </div>
             </div>
-            <div id="timer">
-                <h1 id="countdown"></h1>
-            </div>
-            <h1 class = "titre">A vous de jouer !</h1>
-
-        </div>      
-
-        <div id="image-container">
-            <img id="image" src="" alt="image">
+            
+           
+            
         </div>
+        <div id="image-container">
+            <center><img id="image" src=""></center>
+            
+        </div>
+
+
     </body>
+    <footer>
+        <div class="footer-container">
+            <div class="left-col">   
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a> 
+                    <a href="#"><i class="fab fa-twitter"></i></a> 
+                    <a href="#"><i class="fab fa-youtube"></i></a> 
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+                </div>
+                <p class="rights-text">© 2023 Created By Group 4 All Rights Reserved.</p>
+            </div>
+  
+            <div class="right-col">
+                <form action="" class="newsletter-form">
+                  <center>
+                  <label for="Requete" style="font-family: cursive;">Entrez le mot que vous souhaiteriez ajouter:</label>
+                  <input type="text" id="Requete" name="Requete" required
+                  minlength="2" maxlength="15" size="10">
+                  <input type="submit" value="Confirmer">
+                  
+                    
+                    <p>Après avoir cliqué sur le bouton <strong>Confirmer</strong>, le mot entré dans la boîte nous sera envoyé et nous vérifierons si il est adéquat pour l'ajouter à notre base de données. </p>
+                    <script src="../js/AjoutMot.js"></script>
+                  </center>
+                </form>
+            </div>
+        </div>
+    </footer>
+    
 </html>

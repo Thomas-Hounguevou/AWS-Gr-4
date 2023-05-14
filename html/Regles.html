@@ -1,41 +1,91 @@
   <!DOCTYPE html>
   <html>
     <head>
-      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
-      <br><br>
-      <title>Règles</title>
-      <h1><center>Règles du jeu</center></h1>
+      <meta charset="utf-8">
+      <title>Jeux du Pendu</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="../css/Style.css">
-    </head>
+      <link rel="stylesheet" href="../css/Pendu.css">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+      <script src="https://kit.fontawesome.com/6d3b596002.js" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="../js/Mobile.js" defer></script>
+  </head>
 
     <body>
+      <header>
+        <a class="titre">
+            JEU DU PENDU  <i class="fas fa-gamepad"></i>
+        </a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="../html/Accueil.html">Accueil</a></li>
+                <li><a href="../html/Jeu.html">Jouer</a></li>
+                <li><a href="../html/Leaderboard.html">Leaderboard</a></li>
+                <li><a href="../html/Regles.html">Règles</a></li>
+                
+            </ul>
+        </nav>
+        <a class="cta" href="#">Contact</a>
+        <p class="menu cta">Menu</p>
+    </header>
+    <div id="mobile__menu" class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="../html/Accueil.html">Acceuil</a>
+            <a href="../html/Jeu.html">Jouer</a>
+            <a href="../html/Leaderboard.html">Leaderboard</a>
+            <a href="../html/Regles.html">Règles</a>
+        </div>
+    </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
       <br><br>
       <center>
-      Le but du jeu est simple: il faut trouver le mot caché en devinant les lettres le composant,
-      vous disposez de 10 erreurs possible et de 5 minutes pour gagner la partie, 
-      suite à la partie vous obtiendrez un score dépendant de votre nombre d'erreurs, 
+      <p id ="regle">Le but du jeu est simple : <br> il faut trouver le mot caché en devinant les lettres le composant,<br>
+      vous disposez de 10 erreurs possibles et de 2 minutes pour gagner la partie, <br>
+      suite à la partie vous obtiendrez un score dépendant de votre nombre d'erreurs, <br>
       de la difficulté du mot, ainsi que le temps mis à trouver le mot. <br>
-      Si vous avez compris les règles, cliquez sur le bouton "J'ai compris" ci-dessous pour jouer: <br>
+      Si vous avez compris les règles, <br> cliquez sur le bouton <strong>"J'ai compris"</strong> ci-dessous pour jouer :</p> <br>
       <br>
       <a href="Jeu.html">
-          <button>J'ai compris !</button>
+          <button id="buttonr">J'ai compris !</button>
       </a> <br><br>
       <a href="Accueil.html">
-        <button>Retour à l'accueil</button>
+        <button id="buttonr">Retour à l'accueil</button>
       </a>
     </center>
+    
     </body>
 
-      <footer>
-        <center>
-        <label for="Requete">Entrez le mot que vous souhaiteriez ajouter:</label>
-        <input type="text" id="Requete" name="Requete" required
-        minlength="2" maxlength="15" size="10">
-        <input type="submit" value="Confirmer">
-        <p>Après avoir cliqué sur le bouton <strong>Confirmer</strong>, le mot entré dans la boîte nous sera envoyé et nous vérifierons si il est adéquat pour l'ajouter à notre base de données. </p>
-        <script src="../js/AjoutMot.js"></script>
-        </center>
-      </footer>
+    <footer>
+      <div class="footer-container">
+          <div class="left-col">   
+              <div class="social-media">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a> 
+                  <a href="#"><i class="fab fa-twitter"></i></a> 
+                  <a href="#"><i class="fab fa-youtube"></i></a> 
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a> 
+              </div>
+              <p class="rights-text">© 2023 Created By Group 4 All Rights Reserved.</p>
+          </div>
+
+          <div class="right-col">
+              <form action="" class="newsletter-form">
+                <center>
+                <label for="Requete" style="font-family: cursive;">Entrez le mot que vous souhaiteriez ajouter:</label>
+                <input type="text" id="Requete" name="Requete"
+                minlength="2" maxlength="15" size="10">
+                <input type="submit" value="Confirmer">
+                
+                  
+                  <p>Après avoir cliqué sur le bouton <strong>Confirmer</strong>, le mot entré dans la boîte nous sera envoyé et nous vérifierons si il est adéquat pour l'ajouter à notre base de données. </p>
+                  <script src="../js/AjoutMot.js"></script>
+                </center>
+              </form>
+          </div>
+      </div>
+  </footer>
+
+      
   </html>
