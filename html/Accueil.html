@@ -7,6 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/6d3b596002.js" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
         <script type="text/javascript" src="../js/Mobile.js" defer></script>
     </head>
     <body>
@@ -69,7 +71,6 @@
             </div>
   
             <div class="right-col">
-                <form action="" class="newsletter-form">
                   <center>
                   <label for="Requete" style="font-family: cursive;">Entrez le mot que vous souhaiteriez ajouter:</label>
                   <input type="text" id="Requete" name="Requete" required
@@ -78,7 +79,7 @@
                   
                     
                     <p>Après avoir cliqué sur le bouton <strong>Confirmer</strong>, le mot entré dans la boîte nous sera envoyé et nous vérifierons si il est adéquat pour l'ajouter à notre base de données. </p>
-                    <script src="../js/AjoutMot.js"></script>
+                    <script src="../js/AjoutMot.js" type="module"></script>
                   </center>
                 </form>
             </div>
