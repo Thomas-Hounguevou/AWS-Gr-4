@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "firebase deploy"
+  },
   "dependencies": {
     "socket.io": "^4.6.1",
     "uuid": "^9.0.0"

@@ -309,9 +309,14 @@ p {
   font-size: 1.5rem;
 }
 
+.container {
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+}
+
 table {
   counter-reset: ligne;
-  font-size: 14px;
+  font-size: 20px;
   border-collapse: collapse;
   margin: 0 auto;
 }
@@ -350,7 +355,9 @@ th {
   background-color: #bbb;
 }
 
-
+.container.scroll-bottom {
+  scroll-behavior: smooth;
+}
 
 
 @media screen and (max-height: 450px) {

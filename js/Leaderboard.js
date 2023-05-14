@@ -7,6 +7,7 @@ firebase.initializeApp({
 const ScoreJoueur = firebase.firestore().collection("ScoreJoueur");
 const leaderboard = document.querySelector('#leaderboard');
 const montrerplus = document.querySelector('#montrerplus');
+const leaderboardContainer = document.querySelector('#leaderboard-container');
 let dernier = null;
 
 //Prend les valeurs dans notre base de données jusqu'à atteindre une limite et les trie par ordre décroissant
@@ -43,6 +44,8 @@ function Afficher(querySnapshot) {
       const place = leaderboard.rows.length - 1;
     }
   });
+  leaderboardContainer.classList.add('scroll-bottom');
+  leaderboardContainer.scrollTop = leaderboardContainer.scrollHeight;
 }
 
 getScores(10).then(querySnapshot => {
