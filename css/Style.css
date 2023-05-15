@@ -314,14 +314,14 @@ p {
   overflow-y: auto;
 }
 
-table {
+#leaderboard {
   counter-reset: ligne;
   font-size: 20px;
   border-collapse: collapse;
   margin: 0 auto;
 }
 
-table td:first-child:before {
+#leaderboard td:first-child:before {
   content: counter(ligne);
   counter-increment: ligne;
   min-width: 25px;
